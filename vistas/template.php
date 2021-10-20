@@ -9,7 +9,8 @@
 		<link type="text/css" rel="stylesheet" href="css/main.css"/>
 		<link type="text/css" rel="stylesheet" href="css/controls.css"/>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-		<script type="text/javascript" src="js/redireccionController.js"></script>
+		<script type="text/javascript" src="js/envioAJAX.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
 	<!--
 		Las clases: 

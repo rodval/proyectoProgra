@@ -8,7 +8,7 @@
                     </div>
                     <div class="catalogo-body">
                         <h3>Damas</h3>
-                        <a onClick="realizaProceso('hola');" class="btn-verCatalogo">Catalogo <i class="fa fa-arrow-circle-right"></i></a>
+                        <a onClick= <?php echo "envioDatos('paginas','categorias','genero=0');" ?> class="btn-verCatalogo">Catalogo <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                     </div>
                     <div class="catalogo-body">
                         <h3>Caballeros</h3>
-                        <a onClick="realizaProceso('hola');" class="btn-verCatalogo">Catalogo <i class="fa fa-arrow-circle-right"></i></a>
+                        <a onClick= <?php echo "envioDatos('paginas','categorias','genero=1');" ?>  class="btn-verCatalogo">Catalogo <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                             <div class="producto-line"></div>
                             <div class="producto-btn">
                                 <div class="add-carrito">
-                                    <button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Agregar al carrito </button>
+                                    <button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Agregar </button>
                                 </div>									
                             </div>
                         </div>

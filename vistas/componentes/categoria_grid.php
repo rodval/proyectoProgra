@@ -110,7 +110,7 @@
 											<div class="producto-line"></div>
 											<div class="producto-btn">
 												<div class="add-carrito">
-													<button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Agregar al carrito </button>
+													<button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Agregar </button>
 												</div>									
 											</div>
 										</div>
