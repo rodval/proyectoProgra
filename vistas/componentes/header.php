@@ -20,8 +20,8 @@
                     <div class="header-buscar">
                         <form>
                             <select class="input-select">
-                                <?php foreach($categoria as $categoria) { ?>
-                                    <option value= <?php echo $categoria->idCategoria; ?> > <?php echo $categoria->categoria; ?> </option>
+                                <?php foreach($categoria as $n) { ?>
+                                    <option value= <?php echo $n->idCategoria; ?> > <?php echo $n->categoria; ?> </option>
                                 <?php } ?>
                             </select>
                             <input class="input" placeholder="Que articulo buscas?">
