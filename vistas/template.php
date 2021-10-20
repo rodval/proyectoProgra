@@ -8,8 +8,8 @@
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<link type="text/css" rel="stylesheet" href="css/main.css"/>
 		<link type="text/css" rel="stylesheet" href="css/controls.css"/>
-		<script type="text/javascript" src="js/envioPost.js"></script>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="js/redireccionController.js"></script>
     </head>
 	<!--
 		Las clases: 
