@@ -48,7 +48,7 @@
                 INNER JOIN categoria b ON b.idCategoria = a.idCategoria 
                 INNER JOIN marca c ON c.idMarca = a.idMarca 
                 INNER JOIN imagen_articulo d ON d.idArticulo = a.idArticulo and d.portada = 1
-                WHERE a.estado = 1 and b.estado = 1 and c.estado = 1 and (a.genero = ? OR ? is null) ");
+                WHERE a.estado = 1 and b.estado = 1 and c.estado = 1 and (a.genero = ? OR ? is null) ORDER BY a.precio DESC");
             $sql->execute(array($genero,$genero));
             
             foreach($sql->fetchAll() as $articulo){
@@ -70,11 +70,12 @@
             return $listaArticulo;
         }
 
-        public static function listarArticuloTable(){
+        public static function listarArticuloTable($idArticulo){
             $listaArticulo=[];
             $conexion = BD::crearInstancia();
             $sql = $conexion->query("SELECT a.idArticulo,a.articulo,a.codigo,a.precio,a.cantidad,a.descripcion,a.descuento,b.categoria,c.marca FROM articulo a INNER JOIN categoria b ON b.idCategoria = a.idCategoria INNER JOIN marca c ON c.idMarca = a.idMarca WHERE a.estado = 1 and b.estado = 1 and c.estado = 1");
-            
+            $sql->execute(array($idArticulo));
+
             foreach($sql->fetchAll() as $articulo){
                 $listaArticulo[] = new Articulo(
                     $articulo['idArticulo'],
@@ -97,11 +98,16 @@
         public static function obtenerArticulo($idArticulo){
             $listaArticulo=[];
             $conexion = BD::crearInstancia();
-            $sql = $conexion->query("SELECT a.articulo,a.codigo,a.precio,a.cantidad,a.descripcion,a.descuento,a.idCategoria,a.idMarca FROM articulo a INNER JOIN categoria b ON b.idCategoria = a.idCategoria INNER JOIN marca c ON c.idMarca = a.idMarca WHERE a.idArticulo = '.$idArticulo.' a.estado = 1 and b.estado = 1 and c.estado = 1");
+            $sql = $conexion->prepare("SELECT
+                a.idArticulo,a.articulo,a.codigo,a.precio,a.cantidad,a.descripcion,a.descuento,a.idCategoria,a.idMarca 
+            FROM articulo a 
+            INNER JOIN categoria b ON b.idCategoria = a.idCategoria 
+            INNER JOIN marca c ON c.idMarca = a.idMarca 
+            WHERE a.idArticulo = ? AND a.estado = 1 AND b.estado = 1 AND c.estado = 1");
             
             foreach($sql->fetchAll() as $articulo){
                 $listaArticulo[] = new Articulo(
-                    null,
+                    $articulo['idArticulo'],
                     $articulo['articulo'],
                     $articulo['codigo'],
                     $articulo['precio'],

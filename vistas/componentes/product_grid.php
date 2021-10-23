@@ -8,7 +8,7 @@
                     </div>
                     <div class="catalogo-body">
                         <h3>Damas</h3>
-                        <a onClick= <?php echo "envioDatos('paginas','categorias','genero=0');" ?> class="btn-verCatalogo">Catalogo <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="#" onClick= <?php echo "envioDatos('paginas','categorias','genero=0');" ?> class="btn-verCatalogo">Catalogo <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                     </div>
                     <div class="catalogo-body">
                         <h3>Caballeros</h3>
-                        <a onClick= <?php echo "envioDatos('paginas','categorias','genero=1');" ?>  class="btn-verCatalogo">Catalogo <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="#" onClick= <?php echo "envioDatos('paginas','categorias','genero=1');" ?>  class="btn-verCatalogo">Catalogo <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="producto-body">
                             <p class="producto-categoria"> <?php echo $n->categoria . " / ". $n->marca; ?> </p>
-                            <h3 class="producto-nombre"><a href="#"> <?php echo $n->articulo; ?> </a></h3>
+                            <h3 class="producto-nombre"><a href="#" onClick= <?php echo "envioDatos('paginas','producto','idProducto=".$n->idArticulo."');" ?> > <?php echo $n->articulo; ?> </a></h3>
                             <h4 class="producto-precio"> 
                                 <?php
                                     $precioAct = $n->precio - (($n->precio) * ($n->descuento / 100));

@@ -295,7 +295,7 @@
   color: #D10024;
 }
 
-.producto .producto-body {
+.producto-body {
   position: relative;
   padding: 15px;
   background-color: #FFF;
@@ -303,38 +303,38 @@
   z-index: 20;
 }
 
-.producto .producto-body .producto-categoria {
+.producto-categoria {
   text-transform: uppercase;
   font-size: 12px;
   color: #8D99AE;
 }
 
-.producto .producto-body .producto-nombre {
+.producto-nombre {
   text-transform: uppercase;
   font-size: 14px;
 }
 
-.producto .producto-body .producto-nombre a {
+.producto-nombre a {
   font-weight: 700;
   color: black;
 }
 
-.producto .producto-body .producto-nombre a:hover, .product .product-body .product-nombre a:focus {
+.producto-nombre a:hover, .product .product-body .product-nombre a:focus {
   color: #D10024;
 }
 
-.producto .producto-body .producto-precio {
+.producto-precio {
   color: #D10024;
   font-size: 18px;
 }
 
-.producto .producto-body .producto-precio .producto-old-precio {
+.producto-precio .producto-old-precio {
   font-size: 70%;
   font-weight: 400;
   color: #8D99AE;
 }
 
-.producto .producto-body .producto-line {
+.producto-line {
   position: relative;
   margin: 15px 0px 10px;
   height: 20px;
@@ -349,7 +349,7 @@
   background-color: #E4E7ED;
 }
 
-.producto .producto-body .producto-btn > button {
+.producto-btn > button {
   position: relative;
   width: 40px;
   height: 40px;
@@ -360,7 +360,7 @@
   transition: 0.2s all;
 }
 
-.producto .add-carrito .add-carrito-btn {
+.add-carrito .add-carrito-btn {
   position: relative;
   border: 2px solid transparent;
   height: 40px;
@@ -374,7 +374,7 @@
   transition: 0.2s all;
 }
 
-.producto .add-carrito .add-carrito-btn i {
+.add-carrito .add-carrito-btn i {
   position: absolute;
   left: 0;
   top: 0;
@@ -386,14 +386,14 @@
   visibility: hidden;
 }
 
-.producto .add-carrito .add-carrito-btn:hover {
+.add-carrito .add-carrito-btn:hover {
   background-color: #FFF;
   color: #D10024;
   border-color: #D10024;
   padding: 0px 30px 0px 50px;
 }
 
-.producto .add-carrito .add-carrito-btn:hover i {
+.add-carrito .add-carrito-btn:hover i {
   opacity: 1;
   visibility: visible;
 }

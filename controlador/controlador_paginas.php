@@ -24,6 +24,13 @@
             include_once("vistas/componentes/categoria_grid.php");
             include_once("vistas/componentes/footer.php");
         }
+        public function producto($idProducto){
+            $articulo = Articulo::obtenerArticulo($idProducto);
+            $imagenesArticulo = Image::listarImagenesGrid($idProducto);
+            include_once("vistas/componentes/header.php");
+            include_once("vistas/componentes/producto.php");
+            include_once("vistas/componentes/footer.php");
+        }
     }
 
 ?>
