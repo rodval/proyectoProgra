@@ -14,7 +14,6 @@
         public static function listarMarca(){
             $listaMarca=[];
             $conexion = BD::crearInstancia();
-            $sql = $conexion->query("SELECT idMarca,marca FROM marca WHERE estado = 1");
 
             $sql = $conexion->query("SELECT 
                         a.idMarca,

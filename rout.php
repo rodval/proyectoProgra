@@ -3,5 +3,5 @@
     $objControlador="Controlador".ucfirst($controlador);
 
     $controlador = new $objControlador();
-    $controlador->$accion($genero);
+    $controlador->$accion($genero,$producto,$categoria,$precio,$marca);
 ?>

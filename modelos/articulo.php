@@ -70,40 +70,16 @@
             return $listaArticulo;
         }
 
-        public static function listarArticuloTable($idArticulo){
-            $listaArticulo=[];
-            $conexion = BD::crearInstancia();
-            $sql = $conexion->query("SELECT a.idArticulo,a.articulo,a.codigo,a.precio,a.cantidad,a.descripcion,a.descuento,b.categoria,c.marca FROM articulo a INNER JOIN categoria b ON b.idCategoria = a.idCategoria INNER JOIN marca c ON c.idMarca = a.idMarca WHERE a.estado = 1 and b.estado = 1 and c.estado = 1");
-            $sql->execute(array($idArticulo));
-
-            foreach($sql->fetchAll() as $articulo){
-                $listaArticulo[] = new Articulo(
-                    $articulo['idArticulo'],
-                    $articulo['articulo'],
-                    $articulo['codigo'],
-                    $articulo['precio'],
-                    $articulo['cantidad'],
-                    $articulo['descripcion'],
-                    $articulo['descuento'],
-                    null,
-                    $articulo['categoria'],
-                    null,
-                    $articulo['marca'],
-                    null
-                );
-            }
-            return $listaArticulo;
-        }
-
         public static function obtenerArticulo($idArticulo){
             $listaArticulo=[];
             $conexion = BD::crearInstancia();
             $sql = $conexion->prepare("SELECT
-                a.idArticulo,a.articulo,a.codigo,a.precio,a.cantidad,a.descripcion,a.descuento,a.idCategoria,a.idMarca 
-            FROM articulo a 
-            INNER JOIN categoria b ON b.idCategoria = a.idCategoria 
-            INNER JOIN marca c ON c.idMarca = a.idMarca 
-            WHERE a.idArticulo = ? AND a.estado = 1 AND b.estado = 1 AND c.estado = 1");
+                    a.idArticulo,a.articulo,a.codigo,a.precio,a.cantidad,a.descripcion,a.descuento,a.idCategoria,b.categoria,a.idMarca,c.marca 
+                FROM articulo a 
+                INNER JOIN categoria b ON b.idCategoria = a.idCategoria 
+                INNER JOIN marca c ON c.idMarca = a.idMarca 
+                WHERE a.idArticulo = ? AND a.estado = 1 AND b.estado = 1 AND c.estado = 1");
+            $sql->execute(array($idArticulo));
             
             foreach($sql->fetchAll() as $articulo){
                 $listaArticulo[] = new Articulo(
@@ -115,9 +91,9 @@
                     $articulo['descripcion'],
                     $articulo['descuento'],
                     $articulo['idCategoria'],
-                    null,
+                    $articulo['categoria'],
                     $articulo['idMarca'],
-                    null,
+                    $articulo['marca'],
                     null
                 );
             }

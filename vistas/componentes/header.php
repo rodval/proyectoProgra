@@ -2,7 +2,7 @@
     <div class="top-header">
         <div class="container">
             <ul class="header-links pull-right">
-                <li><a href="#"><i class="fa fa-user-o"></i> Ver perfil</a></li>
+                <li><a href="#"> Ver perfil</a></li>
             </ul>
         </div>
     </div>
@@ -36,6 +36,12 @@
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Carrito</span>
                                 <!-- <div class="qty">2</div> -->
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#">
+                                <i class="fa fa-user-o"></i>
+                                <span>Iniciar sesion</span>
                             </a>
                         </div>
                     </div>

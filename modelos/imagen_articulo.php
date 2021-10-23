@@ -13,15 +13,20 @@
             $this -> portada =  $portada;
         }
 
-        public static function listarImagenesGrid($idArticulo){
+        public static function listarImagenesArticulo($idArticulo){
             $listaImagen=[];
             $conexion = BD::crearInstancia();
-            $sql = $conexion->query("SELECT a.idArticulo,a.url FROM imagen_articulo a INNER JOIN articulo b ON b.idArticulo = a.idArticulo WHERE b.estado = 1 and a.portada = 1");
+            $sql = $conexion->prepare("SELECT 
+                    a.idImagen,a.url 
+                FROM imagen_articulo a 
+                INNER JOIN articulo b ON b.idArticulo = a.idArticulo 
+                WHERE b.estado = 1 AND a.idArticulo = ?");
+            $sql->execute(array($idArticulo));
             
             foreach($sql->fetchAll() as $articulo){
                 $listaImagen[] = new Image(
+                    $articulo['idImagen'],
                     null,
-                    $articulo['idArticulo'],
                     $articulo['url'],
                     null
                 );

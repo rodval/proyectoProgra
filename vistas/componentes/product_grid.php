@@ -51,7 +51,7 @@
                         </div>
                         <div class="producto-body">
                             <p class="producto-categoria"> <?php echo $n->categoria . " / ". $n->marca; ?> </p>
-                            <h3 class="producto-nombre"><a href="#" onClick= <?php echo "envioDatos('paginas','producto','idProducto=".$n->idArticulo."');" ?> > <?php echo $n->articulo; ?> </a></h3>
+                            <h3 class="producto-nombre"><a href="#" onClick= <?php echo "envioDatos('paginas','producto','producto=".$n->idArticulo."');" ?> > <?php echo $n->articulo; ?> </a></h3>
                             <h4 class="producto-precio"> 
                                 <?php
                                     $precioAct = $n->precio - (($n->precio) * ($n->descuento / 100));

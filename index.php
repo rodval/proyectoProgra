@@ -2,7 +2,12 @@
     $controlador="paginas";
     $accion="inicio";
     $genero=null;
-    $idProducto=null;
+    $producto=null;
+    $categoria=null;
+    $precio=null;
+    $marca=null;
+
+    $buscador=null;
 
     if(isset($_GET['controlador']) && isset($_GET['accion'])){
         if(($_GET['controlador'] != "") && ($_GET['accion'] != "") ){
@@ -15,8 +20,24 @@
         $genero=$_GET['genero'];
     }
 
-    if(isset($_GET['idProducto'])){
-        $idProducto=$_GET['idProducto'];
+    if(isset($_GET['producto'])){
+        $producto=$_GET['producto'];
+    }
+
+    if(isset($_GET['categoria'])){
+        $categoria=$_GET['categoria'];
+    }
+
+    if(isset($_GET['precio'])){
+        $precio=$_GET['precio'];
+    }
+
+    if(isset($_GET['marca'])){
+        $marca=$_GET['marca'];
+    }
+
+    if(isset($_GET['buscador'])){
+        $buscador=$_GET['buscador'];
     }
 
     require_once("vistas/template.php");

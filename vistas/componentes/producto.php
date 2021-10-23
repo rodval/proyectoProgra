@@ -5,7 +5,7 @@
                 <h3 class="descripcionSitio-header">Productos</h3>
                 <ul class="descripcionSitio-tree">
                     <li><a href="#" onClick= <?php echo "envioDatos('paginas','inicio');" ?>>Inicio</a></li>
-                    <li class="active">Categorias</li>
+                    <li class="active">Detalle</li>
                 </ul>
             </div>
         </div>
@@ -18,61 +18,84 @@
             <div class="section-producto">
                 <div class="col-md-5">
                     <div class="product-details">
-                        <h2 class="product-name">product name goes here</h2>
                         <div class="container">
                             <div id="galley">
                                 <ul class="pictures">
-                                    <li><img data-original="img/product01.png" src="img/product01.png" ></li>
-                                    <li><img data-original="img/product01.png" src="img/product01.png" ></li>
-                                    <li><img data-original="img/product01.png" src="img/product01.png" ></li>
-                                    <li><img data-original="img/product01.png" src="img/product01.png" ></li>
+                                    <?php
+                                        foreach($imagenesArticulo as $n) {
+                                    ?>
+                                        <li><img data-original= <?php echo ("img/" . $n->url); ?> src= <?php echo ("img/" . $n->url); ?> ></li>
+                                    <?php
+                                        }
+                                    ?>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-5">
-                    <div class="product-details">
-                        <h2 class="product-name">product name goes here</h2>
+                <?php
+                    foreach($articulo as $n) {
+                ?>
 
-                        <p>Categoria: 1,1</p>
+                    <div class="col-md-5">
+                        <div class="product-details">
+                            <h2 class="product-name"><?php echo $n->articulo ?></h2>
 
-                        <div>
-                            <h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
-                            <span class="product-available">In Stock</span>
-                        </div>
+                            <p>Categoria: <?php echo $n->categoria ." / ". $n->marca ?> </p>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <?php
+                                $precioAct = $n->precio - (($n->precio) * ($n->descuento / 100));
+                            ?> 
+                            
+                            <div>
+                                <h3 class="product-price"><?php echo ("$" . round($precioAct, 2));  ?> <del class="product-old-price"><?php echo $n->precio ?></del></h3>
+                                <span class="product-available"><?php echo "(".$n->cantidad." en inventario)"  ?></span>
+                            </div>
 
-                        <div class="product-options">
-                            <label>
-                                Talla
-                                <select class="input-select">
-                                    <option value="0">X</option>
-                                </select>
-                            </label>
-                        </div>
+                            <p><?php echo $n->descripcion ?></p>
 
-                        <div class="add-to-cart">
-                            <div class="qty-label">
-                                Cant.
-                                <div class="input-number price-min">
-                                    <input class="price" type="number">
-                                    <span class="qty-up">+</span>
-                                    <span class="qty-down">-</span>
+                            <div class="product-options">
+                                <label>
+                                    Talla
+                                    <select class="input-select">
+
+                                        <?php
+                                            foreach($talla as $m) {
+                                        ?>
+                                            <option value= <?php echo $m->idTalla ?>> <?php echo $m->talla ?> </option>
+                                        <?php
+                                            }
+                                        ?>
+
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div class="add-to-cart">
+                                <div class="qty-label">
+                                    Cant.
+                                    <div class="input-number price-min">
+                                        <input class="price" type="number" min="0" max= <?php echo $n->cantidad ?>>
+                                        <span class="qty-up">+</span>
+                                        <span class="qty-down">-</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="producto-btn">
-                            <div class="add-carrito">
-                                <button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Agregar </button>
-                            </div>									
-                        </div>
+                            <div class="producto-btn">
+                                <div class="add-carrito">
+                                    <button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Agregar </button>
+                                </div>									
+                            </div>
 
+                        </div>
                     </div>
-                </div>
+
+                <?php
+                    }
+                ?>
+
             </div>
         </div>
     </div>
