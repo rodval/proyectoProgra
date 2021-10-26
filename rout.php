@@ -1,7 +1,11 @@
 <?php
     include_once("controlador/controlador_".$controlador.".php");
     $objControlador="Controlador".ucfirst($controlador);
-
-    $controlador = new $objControlador();
-    $controlador->$accion($genero,$producto,$categoria,$precio,$marca);
+    if($controlador == "usuario"){
+        $controlador = new $objControlador();
+        $controlador->$accion($usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono);
+    } else {
+        $controlador = new $objControlador();
+        $controlador->$accion($carrito,$genero,$producto,$categoria,$precio,$marca,$cantidad,$talla);
+    }
 ?>

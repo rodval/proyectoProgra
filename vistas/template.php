@@ -9,6 +9,7 @@
 		<link type="text/css" rel="stylesheet" href="css/main.css"/>
 		<link type="text/css" rel="stylesheet" href="css/controles.css"/>
 		<link type="text/css" rel="stylesheet" href="css/producto.css"/>
+		<link type="text/css" rel="stylesheet" href="css/carrito.css"/>
 		<link rel="stylesheet" href="css/viewer.css">
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script type="text/javascript" src="js/envioAJAX.js"></script>

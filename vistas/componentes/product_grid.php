@@ -51,7 +51,7 @@
                         </div>
                         <div class="producto-body">
                             <p class="producto-categoria"> <?php echo $n->categoria . " / ". $n->marca; ?> </p>
-                            <h3 class="producto-nombre"><a href="#" onClick= <?php echo "envioDatos('paginas','producto','producto=".$n->idArticulo."');" ?> > <?php echo $n->articulo; ?> </a></h3>
+                            <h3 class="producto-nombre"><b> <?php echo $n->articulo; ?> </b></h3>
                             <h4 class="producto-precio"> 
                                 <?php
                                     $precioAct = $n->precio - (($n->precio) * ($n->descuento / 100));
@@ -62,7 +62,7 @@
                             <div class="producto-line"></div>
                             <div class="producto-btn">
                                 <div class="add-carrito">
-                                    <button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Agregar </button>
+                                    <button class="add-carrito-btn" onClick= <?php echo "envioDatos('paginas','producto','producto=".$n->idArticulo."');" ?> ><i class="fa fa-shopping-cart"></i> Ver producto </button>
                                 </div>									
                             </div>
                         </div>

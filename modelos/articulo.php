@@ -39,17 +39,28 @@
             $this -> image =  $image;
         }
 
-        public static function listarArticuloGrid($genero){
+        public static function listarArticuloGrid($top,$genero){
             $listaArticulo=[];
             $conexion = BD::crearInstancia();
-            $sql = $conexion->prepare("SELECT 
-                    a.idArticulo,a.articulo,a.precio,a.descuento,b.categoria,c.marca,d.url 
-                FROM articulo a 
-                INNER JOIN categoria b ON b.idCategoria = a.idCategoria 
-                INNER JOIN marca c ON c.idMarca = a.idMarca 
-                INNER JOIN imagen_articulo d ON d.idArticulo = a.idArticulo and d.portada = 1
-                WHERE a.estado = 1 and b.estado = 1 and c.estado = 1 and (a.genero = ? OR ? is null) ORDER BY a.precio DESC");
-            $sql->execute(array($genero,$genero));
+
+            if($top) {
+                $sql = $conexion->query("SELECT 
+                        a.idArticulo,a.articulo,a.precio,a.descuento,b.categoria,c.marca,d.url 
+                    FROM articulo a 
+                    INNER JOIN categoria b ON b.idCategoria = a.idCategoria 
+                    INNER JOIN marca c ON c.idMarca = a.idMarca 
+                    INNER JOIN imagen_articulo d ON d.idArticulo = a.idArticulo and d.portada = 1
+                    WHERE a.estado = 1 and b.estado = 1 and c.estado = 1 ORDER BY a.precio DESC LIMIT 3");
+            } else {
+                $sql = $conexion->prepare("SELECT 
+                        a.idArticulo,a.articulo,a.precio,a.descuento,b.categoria,c.marca,d.url 
+                    FROM articulo a 
+                    INNER JOIN categoria b ON b.idCategoria = a.idCategoria 
+                    INNER JOIN marca c ON c.idMarca = a.idMarca 
+                    INNER JOIN imagen_articulo d ON d.idArticulo = a.idArticulo and d.portada = 1
+                    WHERE a.estado = 1 and b.estado = 1 and c.estado = 1 and (a.genero = ? OR ? is null) ORDER BY a.precio DESC");
+                $sql->execute(array($genero,$genero));
+            }
             
             foreach($sql->fetchAll() as $articulo){
                 $listaArticulo[] = new Articulo(

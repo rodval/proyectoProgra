@@ -58,7 +58,7 @@
                             <div class="product-options">
                                 <label>
                                     Talla
-                                    <select class="input-select">
+                                    <select class="input-select" id="inp" name="talla">
 
                                         <?php
                                             foreach($talla as $m) {
@@ -76,17 +76,25 @@
                                 <div class="qty-label">
                                     Cant.
                                     <div class="input-number price-min">
-                                        <input class="price" type="number" min="0" max= <?php echo $n->cantidad ?>>
-                                        <span class="qty-up">+</span>
-                                        <span class="qty-down">-</span>
+                                        <input id="inp" name="cantidad" class="price" type="number" min="1" value="1" max= <?php echo $n->cantidad ?>>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="producto-btn">
-                                <div class="add-carrito">
-                                    <button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Agregar </button>
-                                </div>									
+                                <div class="section-producto">     
+                                    <div class="add-carrito">
+                                        <button class="add-carrito-btn" value= <?php echo "producto=".$n->idArticulo ?> onClick = <?php echo isset($_SESSION["sessionID"]) ? "envioCampos('paginas','verificarProducto',this);" : "envioDatos('paginas','login','');" ?> >
+                                            <i class="fa fa-shopping-cart"></i> Agregar a carrito 
+                                        </button>
+                                    </div>	
+                                    <br>
+                                    <div class="add-carrito">
+                                        <button class="add-carrito-btn" value= <?php echo "producto=".$n->idArticulo ?> onClick= <?php echo "envioCampos('paginas','procesarCompra',this);" ?> >
+                                            <i class="fa fa-shopping-bag"></i> Comprar ahora 
+                                        </button>
+                                    </div>            
+                                </div>							
                             </div>
 
                         </div>
