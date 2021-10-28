@@ -6,6 +6,6 @@
         $controlador->$accion($usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono);
     } else {
         $controlador = new $objControlador();
-        $controlador->$accion($carrito,$genero,$producto,$categoria,$precio,$marca,$cantidad,$talla);
+        $controlador->$accion($carrito,$genero,$producto,$categoria,$preciomax,$preciomin,$marca,$cantidad,$talla,$buscador,$guardarProducto);
     }
 ?>

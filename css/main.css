@@ -1,4 +1,39 @@
 
+/* menu */
+
+.navigation {
+  background: #FFF;
+  border-bottom: 2px solid #E4E7ED;
+  border-top: 3px solid #D10024;
+}
+
+.main-nav>li+li {
+  margin-left: 30px
+}
+
+.main-nav>li>a {
+  padding: 20px 0px;
+}
+
+.main-nav>li>a:hover, .main-nav>li>a:focus, .main-nav>li.active>a {
+  color: #D10024;
+  background-color: transparent;
+}
+
+.main-nav>li>a:after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: #D10024;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+.main-nav>li>a:hover:after, .main-nav>li>a:focus:after, .main-nav>li.active>a:after {
+  width: 100%;
+}
+
 /* Secciond e la barra superior para inicio de sesiones */
 
 .top-header {
@@ -46,21 +81,17 @@
   padding: 15px 0px;
 }
 
-.header-buscar form {
+.header-buscar .buscador-container {
   position: relative;
 }
 
-.header-buscar form .input-select {
+.header-buscar .buscador-container .input {
+  width: calc(100% - 200px);
   margin-right: -4px;
   border-radius: 40px 0px 0px 40px;
 }
 
-.header-buscar form .input {
-  width: calc(100% - 260px);
-  margin-right: -4px;
-}
-
-.header-buscar form .btn-buscar {
+.header-buscar .buscador-container .btn-buscar {
   height: 40px;
   width: 100px;
   background: #D10024;

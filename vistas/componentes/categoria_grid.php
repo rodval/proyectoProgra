@@ -27,7 +27,7 @@
 						?>
 
 							<div class="input-checkbox">
-								<input type="checkbox" class="check" id= <?php echo "category-".$n->idCategoria; ?> >
+								<input type="checkbox" class="check inp" name="categoria" value=<?php echo $n->idCategoria; ?> id= <?php echo "category-".$n->idCategoria; ?> >
 								<label for= <?php echo "category-".$n->idCategoria; ?> >
 									<span></span>
 									<?php echo $n->categoria; ?>
@@ -46,15 +46,11 @@
 					<h3 class="aside-title">Precio</h3>
 					<div class="price-filter">
 						<div class="input-number price-min">
-							<input class="price" type="number">
-							<span class="qty-up">+</span>
-							<span class="qty-down">-</span>
+							<input class="price inp" name="preciomin" type="number" placeholder="Min.">
 						</div>
 						<span>-</span>
 						<div class="input-number price-max">
-							<input class="price" type="number">
-							<span class="qty-up">+</span>
-							<span class="qty-down">-</span>
+							<input class="price inp" name="preciomax" type="number" placeholder="Max.">
 						</div>
 					</div>
 				</div>
@@ -68,7 +64,7 @@
 						?>
 
 							<div class="input-checkbox">
-								<input type="checkbox" class="check" id= <?php echo "brand-".$n->idMarca; ?> >
+								<input type="checkbox inp" name="marca" class="check" value=<?php echo $n->idMarca; ?>  id= <?php echo "brand-".$n->idMarca; ?> >
 								<label for= <?php echo "brand-".$n->idMarca; ?> >
 									<span></span>
 									<?php echo $n->marca; ?>

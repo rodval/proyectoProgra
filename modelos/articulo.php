@@ -39,10 +39,9 @@
             $this -> image =  $image;
         }
 
-        public static function listarArticuloGrid($top,$genero){
+        public static function listarArticuloGrid($top,$genero,$categoria,$preciomax,$preciomin,$marca,$buscador){
             $listaArticulo=[];
             $conexion = BD::crearInstancia();
-
             if($top) {
                 $sql = $conexion->query("SELECT 
                         a.idArticulo,a.articulo,a.precio,a.descuento,b.categoria,c.marca,d.url 
@@ -58,8 +57,10 @@
                     INNER JOIN categoria b ON b.idCategoria = a.idCategoria 
                     INNER JOIN marca c ON c.idMarca = a.idMarca 
                     INNER JOIN imagen_articulo d ON d.idArticulo = a.idArticulo and d.portada = 1
-                    WHERE a.estado = 1 and b.estado = 1 and c.estado = 1 and (a.genero = ? OR ? is null) ORDER BY a.precio DESC");
-                $sql->execute(array($genero,$genero));
+                    WHERE a.estado = 1 and b.estado = 1 and c.estado = 1 and ((a.genero = ? OR ? is null) AND (a.idCategoria = ? OR ? is null) 
+                    AND ((a.precio BETWEEN ? AND ?) OR (? is null AND ? is null)) AND (a.idMarca = ? OR ? is null)  
+                    AND (a.articulo LIKE ?)) ORDER BY a.precio DESC");
+                $sql->execute(array($genero,$genero,$categoria,$categoria,$preciomin,$preciomax,$preciomin,$preciomax,$marca,$marca,$buscador));
             }
             
             foreach($sql->fetchAll() as $articulo){

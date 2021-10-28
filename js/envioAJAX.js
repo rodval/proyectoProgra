@@ -1,11 +1,15 @@
 function envioDatos(controlador,accion,datos){
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: "?controlador=" + controlador + "&accion=" + accion,
         data: datos,
         success:function(data) {
-           document.getElementsByTagName("html")[0].innerHTML = data;
-           if(accion == "producto"){
+            if(controlador == "usuario"){
+                inicio();
+            } else {
+                document.getElementsByTagName("html")[0].innerHTML = data;
+            }
+            if(accion == "producto"){
                 var galley = document.getElementById('galley');
                 var viewer = new Viewer(galley, {
                     url: 'data-original',
@@ -29,7 +33,8 @@ function envioDatos(controlador,accion,datos){
 }
 
 function envioCampos(controlador,accion,context){
-    var inp  = document.querySelectorAll("[id=inp]");
+    var selector = "."+context.id;
+    var inp  = document.querySelectorAll(selector);
     var str = context.value;
 
     inp.forEach(function(e){
@@ -37,50 +42,26 @@ function envioCampos(controlador,accion,context){
     });
 
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: "?controlador=" + controlador + "&accion=" + accion,
         data: str,
         success:function(data) {
-           document.getElementsByTagName("html")[0].innerHTML = data;
+            if(controlador == "usuario"){
+                inicio();
+            } else {
+                document.getElementsByTagName("html")[0].innerHTML = data;
+            }
         }
     });
 }
 
-function agregarUsuario(){
-    var nombre = document.getElementById("nombre").value;
-    var apellido = document.getElementById("apellido").value;
-    var direccion = document.getElementById("direccion").value;
-    var mail = document.getElementById("mail").value;
-
-    var telefono = document.getElementById("telefono").value;
-    var usuario = document.getElementById("usuario").value;
-    var clave = document.getElementById("clave").value;
-    var clave2 = document.getElementById("clave2").value;
-
-    if(clave != clave2){
-        alert('Las claves no coinciden');
-    } else {
-        $.ajax({
-            type: "GET",
-            url: "?controlador=usuario&accion=agregarUsuario",
-            data: "nombre="+nombre+"&apellido="+apellido+"&direccion="+direccion+"&mail="+mail+"&telefono="+telefono+"&usuario="+usuario+"&clave="+clave,
-            success:function(data) {
-               document.getElementsByTagName("html")[0].innerHTML = data;
-            }
-        });
-    }
-}
-
-function iniciarSession(){
-    var usuario = document.getElementById("usuarioI").value;
-    var clave = document.getElementById("claveI").value;
-
+function inicio(){
     $.ajax({
-        type: "GET",
-        url: "?controlador=usuario&accion=validarUsuario",
-        data: "usuario="+usuario+"&clave="+clave,
+        type: "POST",
+        url: "?controlador=paginas&accion=inicio",
+        data: "",
         success:function(data) {
-           document.getElementsByTagName("html")[0].innerHTML = data;
+            document.getElementsByTagName("html")[0].innerHTML = data;
         }
     });
 }

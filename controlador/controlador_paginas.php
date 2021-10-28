@@ -10,15 +10,17 @@
     BD::crearInstancia();
 
     class ControladorPaginas{
-        public function inicio($carrito,$genero){
-            $articulo = Articulo::listarArticuloGrid(true,$genero);
+        public function inicio($carrito,$genero,$producto,$categoria,$preciomax,$preciomin,$marca,$cantidad,$talla,$buscador){
+            $articulo = Articulo::listarArticuloGrid(true,$genero,$categoria,$preciomax,$preciomin,$marca,$buscador);
             $categoria = Categoria::listarCategoria();
             include_once("vistas/componentes/header.php");
+            include_once("vistas/componentes/menu.php");
             include_once("vistas/componentes/product_grid.php");
             include_once("vistas/componentes/footer.php");
         }
-        public function categorias($carrito,$genero,$producto,$categoria,$precio,$marca){
-            $articulo = Articulo::listarArticuloGrid(false,$genero);
+        public function categorias($carrito,$genero,$producto,$categoria,$preciomax,$preciomin,$marca,$cantidad,$talla,$buscador){
+            $buscador = ("%".$buscador."%");
+            $articulo = Articulo::listarArticuloGrid(false,$genero,$categoria,$preciomax,$preciomin,$marca,$buscador);
             $categoria = Categoria::listarCategoria();
             $marca = Marca::listarMarca();
             include_once("vistas/componentes/header.php");
@@ -46,13 +48,10 @@
             include_once("vistas/componentes/carritoCompra.php");
             include_once("vistas/componentes/footer.php");
         }
-        public function procesarCompra($carrito,$genero,$producto,$categoria,$precio,$marca,$cantidad,$talla){
+        public function procesarCompra($carrito,$genero,$producto,$categoria,$preciomax,$preciomin,$marca,$cantidad,$talla,$buscador,$guardarProducto){
             $categoria = Categoria::listarCategoria();
-            foreach($_SESSION["carritoCompra"] as $key => $value){
-                foreach($value as $k => $v){
-                    echo $k."=".$v."<br />";
-                }
-            }
+            $lstArticulo = $guardarProducto ? $_SESSION["carritoCompraG"] : $_SESSION["carritoCompraB"] ;
+
             include_once("vistas/componentes/header.php");
             include_once("vistas/componentes/verificar.php");
             include_once("vistas/componentes/footer.php");

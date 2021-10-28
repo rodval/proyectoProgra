@@ -23,15 +23,10 @@
                 </div>
                 <div class="col-md-6">
                     <div class="header-buscar">
-                        <form>
-                            <select class="input-select">
-                                <?php foreach($categoria as $n) { ?>
-                                    <option value= <?php echo $n->idCategoria; ?> > <?php echo $n->categoria; ?> </option>
-                                <?php } ?>
-                            </select>
-                            <input class="input" placeholder="Que articulo buscas?">
-                            <button class="btn-buscar">Buscar</button>
-                        </form>
+                        <div class="buscador-container">
+                            <input class="input inp" name="buscador" placeholder="Que articulo buscas?">
+                            <button id="inp" onClick=<?php echo "envioCampos('paginas','categorias',this);" ?> class="btn-buscar">Buscar</button>
+                        </div>
                     </div>
                 </div>
 

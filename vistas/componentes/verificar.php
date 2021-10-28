@@ -19,7 +19,7 @@
 		<div class="section-producto">
 			<div class="col-md-5 order-details">
                     <div class="section-title text-center">
-                        <h3 class="title">Registrarse</h3>
+                        <h3 class="title">Datos de envio</h3>
                     </div>
                     <div class="order-summary">
                         <div class="form-group">
@@ -38,51 +38,49 @@
                             <input class="input" type="text" id="telefono" placeholder="Telefono">
                         </div>
                     </div>
-					<div class="form-group">
-						<div class="input-checkbox">
-							<input type="checkbox" id="create-account">
-							<label for="create-account">
-								<span></span>
-								Crear cuenta?
-							</label>
-							<div class="caption">
-								<div class="form-group">
-									<input class="input" type="text" id="usuario" placeholder="Usuario">
-								</div>
-								<div class="form-group">
-									<input class="input" type="text" id="clave" placeholder="Clave">
-								</div>
-								<div class="form-group">
-									<input class="input" type="text" id="clave2" placeholder="Confirmar clave">
-								</div>
-							</div>
-						</div>
-					</div>
                 </div>
 
 				<!-- Order Details -->
 				<div class="col-md-5 order-details">
 					<div class="section-title text-center">
-						<h3 class="title">Your Order</h3>
+						<h3 class="title">DETALLE COMPRA</h3>
 					</div>
 					<div class="order-summary">
 						<div class="order-col">
-							<div><strong>PRODUCT</strong></div>
+							<div><strong>PRODUCTOS</strong></div>
 							<div><strong>TOTAL</strong></div>
 						</div>
 						<div class="order-products">
-							<div class="order-col">
-								<div>1x Product Name Goes Here</div>
-								<div>$980.00</div>
-							</div>
-							<div class="order-col">
-								<div>2x Product Name Goes Here</div>
-								<div>$980.00</div>
-							</div>
+
+							<?php 
+								$total=0;
+								foreach($lstArticulo as $key => $value){
+									$articulo = Articulo::obtenerArticulo($value["producto"]);
+							?>
+	
+								<div class="order-col">
+									
+									<div><a href=#><i class="fa fa-times-circle"></i></a></div>
+									<div value=""> <?php echo $value["cantidad"]." x "; foreach($articulo as $n){ echo $n->articulo." / ".$n->marca; ?> </div>
+									<div>
+										<?php 
+											$preciot = ($n->precio) * $value["cantidad"];
+											$total = $total + $preciot;
+											echo "$".$preciot; }
+										?>
+									</div>
+								</div>
+	
+							<?php 
+								
+								}
+
+							?>
+
 						</div>
 						<div class="order-col">
 							<div><strong>TOTAL</strong></div>
-							<div><strong class="order-total">$2940.00</strong></div>
+							<div><strong class="order-total"><?php echo "$".$total; ?></strong></div>
 						</div>
 					</div>
 					<a href="#" class="primary-btn order-submit">Procesar compra</a>

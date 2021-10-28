@@ -45,15 +45,26 @@
         }
 
         public static function validarUsuario($usuario,$clave){
+            $listaUsuario=[];
             $conexion = BD::crearInstancia();
-            $sql = $conexion->prepare("SELECT nombre,apellido FROM usuario WHERE usuario = ? AND clave = ? ");
+            $sql = $conexion->prepare("SELECT nombre,apellido,direccion,mail,telefono,idRol FROM usuario WHERE usuario = ? AND clave = ? ");
             $sql->execute(array($usuario,$clave));
 
-            if($sql){
-                return true;
+            foreach($sql->fetchAll() as $usuario){
+                $listaUsuario[] = new Usuario(
+                    null,
+                    null,
+                    null,
+                    $usuario['nombre'],
+                    $usuario['apellido'],
+                    $usuario['direccion'],
+                    $usuario['mail'],
+                    $usuario['telefono'],
+                    null,
+                    $usuario['idRol']
+                );
             }
-
-            return false;
+            return $listaArticulo;
         }
     }
 ?>

@@ -11,38 +11,24 @@
         public function agregarUsuario($usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono){
             $result = Usuario::agregarUsuario($usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono,2);
             if($result){
+                echo "ok";
                 session_destroy();
                 session_start();
-                $_SESSION["sessionID"]=$usuario;
+                $_SESSION["sessionID"]=session_id();
             } 
-            $articulo = Articulo::listarArticuloGrid(true,null);
-            $categoria = Categoria::listarCategoria();
-            $carrito = 0;
-            include_once("vistas/componentes/header.php");
-            include_once("vistas/componentes/product_grid.php");
-            include_once("vistas/componentes/footer.php");
         }
         public function validarUsuario($usuario,$clave){
             $result = Usuario::validarUsuario($usuario,$clave);
-            if($result){
+            $r = true;
+            foreach ( $result AS $n ) $r = false;
+            if($r){
                 session_destroy();
                 session_start();
-                $_SESSION["sessionID"]=$usuario;
-            } 
-            $articulo = Articulo::listarArticuloGrid(true,null);
-            $categoria = Categoria::listarCategoria();
-            include_once("vistas/componentes/header.php");
-            include_once("vistas/componentes/product_grid.php");
-            include_once("vistas/componentes/footer.php");
+                $_SESSION["sessionID"]=session_id();
+            }
         }
         public function cerrarSession(){
-            session_destroy();
-            $carrito = 0;
-            $articulo = Articulo::listarArticuloGrid(true,null);
-            $categoria = Categoria::listarCategoria();
-            include_once("vistas/componentes/header.php");
-            include_once("vistas/componentes/product_grid.php");
-            include_once("vistas/componentes/footer.php");
+            session_unset();
         }
     }
 
