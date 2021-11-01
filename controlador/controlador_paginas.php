@@ -19,8 +19,7 @@
             include_once("vistas/componentes/footer.php");
         }
         public function categorias($carrito,$genero,$producto,$categoria,$preciomax,$preciomin,$marca,$cantidad,$talla,$buscador){
-            $buscador = ("%".$buscador."%");
-            $articulo = Articulo::listarArticuloGrid(false,$genero,$categoria,$preciomax,$preciomin,$marca,$buscador);
+            $articulo = Articulo::listarArticuloGrid(false,$genero,$categoria,$preciomax,$preciomin,$marca,("%".$buscador."%"));
             $categoria = Categoria::listarCategoria();
             $marca = Marca::listarMarca();
             include_once("vistas/componentes/header.php");
@@ -37,21 +36,21 @@
             include_once("vistas/componentes/footer.php");
         }
         public function login($carrito){
-            $categoria = Categoria::listarCategoria($carrito);
+            $categoria = Categoria::listarCategoria();
             include_once("vistas/componentes/header.php");
             include_once("vistas/componentes/login.php");
             include_once("vistas/componentes/footer.php");
         }
         public function verificarProducto($carrito){
+            $articulo = Articulo::listarArticuloTable();
             $categoria = Categoria::listarCategoria();
             include_once("vistas/componentes/header.php");
-            include_once("vistas/componentes/carritoCompra.php");
+            include_once("vistas/componentes/listaProducto.php");
             include_once("vistas/componentes/footer.php");
         }
         public function procesarCompra($carrito,$genero,$producto,$categoria,$preciomax,$preciomin,$marca,$cantidad,$talla,$buscador,$guardarProducto){
             $categoria = Categoria::listarCategoria();
-            $lstArticulo = $guardarProducto ? $_SESSION["carritoCompraG"] : $_SESSION["carritoCompraB"] ;
-
+            $lstArticulo = $guardarProducto ? $_SESSION["carritoCompraG"] : $_SESSION["carritoCompraB"];
             include_once("vistas/componentes/header.php");
             include_once("vistas/componentes/verificar.php");
             include_once("vistas/componentes/footer.php");

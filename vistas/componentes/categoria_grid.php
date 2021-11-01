@@ -64,7 +64,7 @@
 						?>
 
 							<div class="input-checkbox">
-								<input type="checkbox inp" name="marca" class="check" value=<?php echo $n->idMarca; ?>  id= <?php echo "brand-".$n->idMarca; ?> >
+								<input type="checkbox" class="check inp" name="marca" value=<?php echo $n->idMarca; ?>  id= <?php echo "brand-".$n->idMarca; ?> >
 								<label for= <?php echo "brand-".$n->idMarca; ?> >
 									<span></span>
 									<?php echo $n->marca; ?>

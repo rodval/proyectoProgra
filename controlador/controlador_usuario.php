@@ -12,7 +12,7 @@
             $result = Usuario::agregarUsuario($usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono,2);
             if($result){
                 echo "ok";
-                session_destroy();
+                unset($_SESSION['sessionID']);
                 session_start();
                 $_SESSION["sessionID"]=session_id();
             } 
@@ -20,9 +20,12 @@
         public function validarUsuario($usuario,$clave){
             $result = Usuario::validarUsuario($usuario,$clave);
             $r = true;
-            foreach ( $result AS $n ) $r = false;
+            foreach ( $result AS $n ) {
+                echo $n->idRol;
+                $r = false;
+            };
             if($r){
-                session_destroy();
+                unset($_SESSION['sessionID']);
                 session_start();
                 $_SESSION["sessionID"]=session_id();
             }

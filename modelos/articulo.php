@@ -19,7 +19,10 @@
 
         public $image;
 
-        public function __construct($idArticulo,$articulo,$codigo,$precio,$cantidad,$descripcion,$descuento,$idCategoria,$categoria,$idMarca,$marca,$image){
+        public $estado;
+        public $genero;
+
+        public function __construct($idArticulo,$articulo,$codigo,$precio,$cantidad,$descripcion,$descuento,$idCategoria,$categoria,$idMarca,$marca,$image,$estado,$genero){
             $this -> idArticulo =  $idArticulo;
             $this -> articulo =  $articulo;
 
@@ -37,6 +40,9 @@
             $this -> marca =  $marca;
 
             $this -> image =  $image;
+
+            $this -> estado =  $estado;
+            $this -> genero =  $genero;
         }
 
         public static function listarArticuloGrid($top,$genero,$categoria,$preciomax,$preciomin,$marca,$buscador){
@@ -76,7 +82,50 @@
                     $articulo['categoria'],
                     null,
                     $articulo['marca'],
-                    $articulo['url']
+                    $articulo['url'],
+                    null,
+                    null
+                ); 
+            }
+            return $listaArticulo;
+        }
+
+        public static function listarArticuloTable(){
+            $listaArticulo=[];
+            $conexion = BD::crearInstancia();
+
+            $sql = $conexion->query("SELECT
+                    a.idArticulo,
+                    a.codigo,
+                    a.articulo,
+                    b.categoria,
+                    c.marca,
+                    a.descripcion,
+                    a.estado,
+                    a.cantidad,
+                    a.precio,
+                    a.descuento,
+                    a.genero
+                FROM articulo a 
+                INNER JOIN categoria b ON b.idCategoria = a.idCategoria
+                INNER JOIN marca c ON c.idMarca = a.idMarca");
+
+            foreach($sql->fetchAll() as $articulo){
+                $listaArticulo[] = new Articulo(
+                    $articulo['idArticulo'],
+                    $articulo['articulo'],
+                    $articulo['codigo'],
+                    $articulo['precio'],
+                    $articulo['cantidad'],
+                    $articulo['descripcion'],
+                    $articulo['descuento'],
+                    null,
+                    $articulo['categoria'],
+                    null,
+                    $articulo['marca'],
+                    null,
+                    $articulo['estado'],
+                    $articulo['genero']
                 );
             }
             return $listaArticulo;
@@ -106,6 +155,8 @@
                     $articulo['categoria'],
                     $articulo['idMarca'],
                     $articulo['marca'],
+                    null,
+                    null,
                     null
                 );
             }

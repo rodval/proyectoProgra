@@ -25,7 +25,6 @@
     $cantidad=isset($_POST['cantidad']) ? $_POST['cantidad'] : null ;
     $talla=isset($_POST['talla']) ? $_POST['talla'] : null ;
 
-    $carrito=isset($_POST['carrito']) ? $_POST['carrito'] : 0 ;
     $buscador=isset($_POST['buscador']) ? $_POST['buscador'] : "" ;
 
     $usuario=isset($_POST['usuario']) ? $_POST['usuario'] : null ;
@@ -50,6 +49,8 @@
             array_push($_SESSION["carritoCompraB"],$pr);
         }
     }
+
+    $carrito=isset($_SESSION['carritoCompraG']) ? count($_SESSION['carritoCompraG']) : 0 ;
 
     require_once("vistas/template.php");
 ?>

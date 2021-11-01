@@ -30,20 +30,18 @@
                     </div>
                 </div>
 
-                <?php if(isset($_SESSION["sessionID"])){ ?>
-                    <div class="col-md-3 clearfix">
-                        <div class="header-carrito">
-                            <div>
-                                <a href="#" onClick= <?php echo "envioDatos('paginas','verificarProducto',".$carrito.");" ?>>
-                                    <i class="fa fa-shopping-cart"></i>
-                                    <span>Carrito</span>
-                                    <div class="qty"><?php echo $carrito ?></div>
-                                </a>
-                            </div>
-                            <div>
+                <div class="col-md-3 clearfix">
+                    <div class="header-carrito">
+                        <div>
+                            <a href="#" onClick= <?php echo isset($_SESSION['carritoCompraG']) ? "envioDatos('paginas','procesarCompra','guardarProducto=true');" : "";  ?>>
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Carrito</span>
+                                <div class="qty"> <?php echo $carrito; ?> </div>
+                            </a>
                         </div>
+                        <div>
                     </div>
-                <?php } ?>
+                </div>
 
             </div>
         </div>
