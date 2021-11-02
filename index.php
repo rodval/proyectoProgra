@@ -11,15 +11,20 @@
         }
     }
 
-    $guardarProducto=isset($_POST['guardarProducto']) ? $_POST['guardarProducto'] : false ;
+    if($controlador != "paginas" && $accion != "categorias"){
+        session_unset('marca');
+        session_unset('categoria');
+    }
+
+    $guardarDato=isset($_POST['guardarDato']) ? $_POST['guardarDato'] : false ;
 
     $genero=isset($_POST['genero']) ? $_POST['genero'] : null ;
     $producto=isset($_POST['producto']) ? $_POST['producto'] : null ;
-    $categoria=isset($_POST['categoria']) ? $_POST['categoria'] : null ;
 
     $preciomin=isset($_POST['preciomin']) ? $_POST['preciomin'] : null ;
     $preciomax=isset($_POST['preciomax']) ? $_POST['preciomax'] : null ;
 
+    $categoria=isset($_POST['categoria']) ? $_POST['categoria'] : null ;
     $marca=isset($_POST['marca']) ? $_POST['marca'] : null ;
 
     $cantidad=isset($_POST['cantidad']) ? $_POST['cantidad'] : null ;
@@ -37,7 +42,7 @@
 
     if($producto && $cantidad && $talla){
         $pr = array("producto"=>$producto,"cantidad"=>$cantidad,"talla"=>$talla);
-        if($guardarProducto){
+        if($guardarDato){
             if(isset($_SESSION["carritoCompraG"])){
                 array_push($_SESSION["carritoCompraG"],$pr);
             } else {

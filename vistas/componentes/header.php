@@ -25,7 +25,7 @@
                     <div class="header-buscar">
                         <div class="buscador-container">
                             <input class="input inp" name="buscador" placeholder="Que articulo buscas?">
-                            <button id="inp" onClick=<?php echo "envioCampos('paginas','categorias',this);" ?> class="btn-buscar">Buscar</button>
+                            <button id="inp" onClick="envioCampos('paginas','categorias',this);" class="btn-buscar">Buscar</button>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                 <div class="col-md-3 clearfix">
                     <div class="header-carrito">
                         <div>
-                            <a href="#" onClick= <?php echo isset($_SESSION['carritoCompraG']) ? "envioDatos('paginas','procesarCompra','guardarProducto=true');" : "";  ?>>
+                            <a href="#" onClick= <?php echo isset($_SESSION['carritoCompraG']) ? "envioDatos('paginas','procesarCompra','guardarDato=true');" : "";  ?>>
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Carrito</span>
                                 <div class="qty"> <?php echo $carrito; ?> </div>

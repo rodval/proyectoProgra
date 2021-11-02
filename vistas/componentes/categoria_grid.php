@@ -1,4 +1,3 @@
-
 <div class="descripcionSitio" class="section">
 	<div class="container">
 		<div class="row">
@@ -27,7 +26,7 @@
 						?>
 
 							<div class="input-checkbox">
-								<input type="checkbox" class="check inp" name="categoria" value=<?php echo $n->idCategoria; ?> id= <?php echo "category-".$n->idCategoria; ?> >
+								<input type="checkbox" class="check" name="categoria" onChange="envioDatos('paginas','categorias','categoria=' + this.value);" value=<?php echo $n->idCategoria; ?> id= <?php echo "category-".$n->idCategoria; ?> >
 								<label for= <?php echo "category-".$n->idCategoria; ?> >
 									<span></span>
 									<?php echo $n->categoria; ?>
@@ -43,19 +42,6 @@
 				</div>
 				
 				<div class="aside">
-					<h3 class="aside-title">Precio</h3>
-					<div class="price-filter">
-						<div class="input-number price-min">
-							<input class="price inp" name="preciomin" type="number" placeholder="Min.">
-						</div>
-						<span>-</span>
-						<div class="input-number price-max">
-							<input class="price inp" name="preciomax" type="number" placeholder="Max.">
-						</div>
-					</div>
-				</div>
-				
-				<div class="aside">
 					<h3 class="aside-title">Marcas</h3>
 					<div class="checkbox-filter">
 
@@ -64,7 +50,7 @@
 						?>
 
 							<div class="input-checkbox">
-								<input type="checkbox" class="check inp" name="marca" value=<?php echo $n->idMarca; ?>  id= <?php echo "brand-".$n->idMarca; ?> >
+								<input type="checkbox" class="check" name="marca" onChange="envioDatos('paginas','categorias','marca=' + this.value);" value=<?php echo $n->idMarca; ?>  id= <?php echo "brand-".$n->idMarca; ?> >
 								<label for= <?php echo "brand-".$n->idMarca; ?> >
 									<span></span>
 									<?php echo $n->marca; ?>
@@ -79,29 +65,24 @@
 					</div>
 				</div>
 
-				<div class="aside">
-					<div class="producto-btn">
-						<div class="add-carrito">
-							<button class="add-carrito-btn"><i class="fa fa-filter"></i> Filtrar </button>
-						</div>									
-					</div>
-				</div>
-
 			</div>
 			
 			<div id="store" class="col-md-9">
-				<div class="store-filter clearfix">
-					<div class="store-sort">
-						<label>
-							Ordenar por:
-							<select class="input-select">
-								<option value="0">Precio mas bajo</option>
-								<option value="1">Precio mas alto</option>
-							</select>
-						</label>
-					</div>
-				</div>
 				
+				<!-- 
+					<div class="store-filter clearfix">
+						<div class="store-sort">
+							<label>
+								Ordenar por:
+								<select class="input-select inp" name=>
+									<option value="0">Precio mas bajo</option>
+									<option value="1">Precio mas alto</option>
+								</select>
+							</label>
+						</div>
+					</div>
+				-->
+
 				<div class="row">
 
 					<?php

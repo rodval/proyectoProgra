@@ -15,6 +15,17 @@
 <div class="section">
 	<div class="container">
 		<div class="row">
+
+            <div class="aside">
+                <div class="producto-btn">
+                    <div class="add-carrito">
+                        <button class="add-carrito-btn"><i class="fa fa-filter"></i> Agregar producto </button>
+                    </div>									
+                </div>
+            </div>
+
+            <br>
+            <br>
             
             <table class="table">
                 <thead>

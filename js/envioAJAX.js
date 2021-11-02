@@ -32,14 +32,20 @@ function envioDatos(controlador,accion,datos){
     });
 }
 
-function envioCampos(controlador,accion,context){
-    var selector = "."+context.id;
-    var inp  = document.querySelectorAll(selector);
-    var str = context.value;
+function envioCampos(controlador,accion,context,array){
 
-    inp.forEach(function(e){
-        str = str + "&" + e.name.toString() + "=" + e.value.toString();
-    });
+    var selector = "."+context.id;
+    var inp = document.querySelectorAll(selector);
+    var str;
+
+    if(array){
+        
+    } else {
+        str = context.value;
+        inp.forEach(function(e){
+            str = str + "&" + e.name.toString() + "=" + e.value.toString();
+        });
+    }
 
     $.ajax({
         type: "POST",

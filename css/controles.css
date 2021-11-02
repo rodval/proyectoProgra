@@ -136,7 +136,7 @@
 }
 
 .input-checkbox .check+label span:after {
-  content: '✔';
+  content: '🗸';
   position: absolute;
   top: -2px;
   left: 1px;

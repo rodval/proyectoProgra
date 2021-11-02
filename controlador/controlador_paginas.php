@@ -19,6 +19,31 @@
             include_once("vistas/componentes/footer.php");
         }
         public function categorias($carrito,$genero,$producto,$categoria,$preciomax,$preciomin,$marca,$cantidad,$talla,$buscador){
+
+            if($categoria){
+                $pr = array("categoria"=>$categoria);
+                if(isset($_SESSION["categoria"])){
+                    array_push($_SESSION["categoria"],$pr);
+                } else {
+                    $_SESSION["categoria"]=array();
+                    array_push($_SESSION["categoria"],$pr);
+                }
+            }
+
+            echo json_encode($_SESSION["categoria"]);
+        
+            if($marca){
+                $pr = array("marca"=>$marca);
+                if(isset($_SESSION["marca"])){
+                    array_push($_SESSION["marca"],$pr);
+                } else {
+                    $_SESSION["marca"]=array();
+                    array_push($_SESSION["marca"],$pr);
+                }
+            }
+
+            echo json_encode($_SESSION["marca"]);
+
             $articulo = Articulo::listarArticuloGrid(false,$genero,$categoria,$preciomax,$preciomin,$marca,("%".$buscador."%"));
             $categoria = Categoria::listarCategoria();
             $marca = Marca::listarMarca();
@@ -48,9 +73,9 @@
             include_once("vistas/componentes/listaProducto.php");
             include_once("vistas/componentes/footer.php");
         }
-        public function procesarCompra($carrito,$genero,$producto,$categoria,$preciomax,$preciomin,$marca,$cantidad,$talla,$buscador,$guardarProducto){
+        public function procesarCompra($carrito,$genero,$producto,$categoria,$preciomax,$preciomin,$marca,$cantidad,$talla,$buscador,$guardarDato){
             $categoria = Categoria::listarCategoria();
-            $lstArticulo = $guardarProducto ? $_SESSION["carritoCompraG"] : $_SESSION["carritoCompraB"];
+            $lstArticulo = $guardarDato ? $_SESSION["carritoCompraG"] : $_SESSION["carritoCompraB"];
             include_once("vistas/componentes/header.php");
             include_once("vistas/componentes/verificar.php");
             include_once("vistas/componentes/footer.php");

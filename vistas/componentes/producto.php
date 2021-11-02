@@ -84,7 +84,7 @@
                             <div class="producto-btn">
                                 <div class="section-producto">     
                                     <div class="add-carrito">
-                                        <button class="add-carrito-btn" id="inp" value= <?php echo "guardarProducto=true&producto=".$n->idArticulo ?> onClick = <?php echo "envioCampos('paginas','procesarCompra',this);" ?> >
+                                        <button class="add-carrito-btn" id="inp" value= <?php echo "guardarDato=true&producto=".$n->idArticulo ?> onClick = <?php echo "envioCampos('paginas','procesarCompra',this);" ?> >
                                             <i class="fa fa-shopping-cart"></i> Agregar a carrito 
                                         </button>
                                     </div>	
