@@ -23,19 +23,19 @@
                     </div>
                     <div class="order-summary">
 							<div class="form-group">
-								<input class="input" type="text" id="nombre" placeholder="Nombre" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["nombre"] : ""; ?>>
+								<input class="input inp" type="text" name="nombre" placeholder="Nombre" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["nombre"] : ""; ?>>
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" id="apellido" placeholder="Apellido" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["apellido"] : ""; ?>>
+								<input class="input inp" type="text" name="apellido" placeholder="Apellido" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["apellido"] : ""; ?>>
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" id="direccion" placeholder="Direccion" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["direccion"] : ""; ?>>
+								<input class="input inp" type="text" name="direccion" placeholder="Direccion" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["direccion"] : ""; ?>>
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" id="mail" placeholder="Correo electronico" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["mail"] : ""; ?>>
+								<input class="input inp" type="text" name="mail" placeholder="Correo electronico" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["mail"] : ""; ?>>
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" id="telefono" placeholder="Telefono" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["telefono"] : ""; ?>>
+								<input class="input inp" type="text" name="telefono" placeholder="Telefono" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["telefono"] : ""; ?>>
 							</div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
 							<div><strong class="order-total"><?php echo "$".$total; ?></strong></div>
 						</div>
 					</div>
-					<a href="#" class="primary-btn order-submit">Procesar compra</a>
+					<a href="#" class="primary-btn order-submit" id="inp" onClick= <?php echo isset($_SESSION["user"]) ? "envioDatos('compra','agregarCompra');" : "envioCampos('paginas','agregarCompra',this);" ?> >Procesar compra</a>
 				</div>
 			</div>
 		</div>

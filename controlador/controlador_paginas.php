@@ -39,6 +39,7 @@
         public function login($carrito){
             $categoria = Categoria::listarCategoria();
             include_once("vistas/componentes/header.php");
+            include_once("vistas/componentes/menu.php");
             include_once("vistas/componentes/login.php");
             include_once("vistas/componentes/footer.php");
         }
@@ -46,6 +47,7 @@
             $articulo = Articulo::listarArticuloTable();
             $categoria = Categoria::listarCategoria();
             include_once("vistas/componentes/header.php");
+            include_once("vistas/componentes/menu.php");
             include_once("vistas/componentes/listaProducto.php");
             include_once("vistas/componentes/footer.php");
         }

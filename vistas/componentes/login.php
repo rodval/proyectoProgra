@@ -1,18 +1,3 @@
-
-<div class="descripcionSitio" class="section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h3 class="descripcionSitio-header">Productos</h3>
-				<ul class="descripcionSitio-tree">
-					<li><a href="#" onClick= <?php echo "envioDatos('paginas','inicio');" ?>>Inicio</a></li>
-					<li class="active">Categorias</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
-
 <div class="section">
     <div class="container">
         <div class="row">

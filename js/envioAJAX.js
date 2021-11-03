@@ -6,6 +6,8 @@ function envioDatos(controlador,accion,datos){
         success:function(data) {
             if(controlador == "usuario"){
                 inicio();
+            } else if(controlador == "compra"){
+                //inicio();
             } else {
                 document.getElementsByTagName("html")[0].innerHTML = data;
             }

@@ -1,7 +1,7 @@
 <?php
     include_once("controlador/controlador_".$controlador.".php");
     $objControlador="Controlador".ucfirst($controlador);
-    if($controlador == "usuario"){
+    if($controlador == "usuario" || $controlador == "compra"){
         $controlador = new $objControlador();
         $controlador->$accion($usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono);
     } else {

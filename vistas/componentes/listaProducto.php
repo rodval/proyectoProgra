@@ -1,17 +1,3 @@
-<div class="descripcionSitio" class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="descripcionSitio-header">Productos</h3>
-                <ul class="descripcionSitio-tree">
-                    <li><a href="#" onClick= <?php echo "envioDatos('paginas','inicio');" ?>>Inicio</a></li>
-                    <li class="active">Carrito de compras</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="section">
 	<div class="container">
 		<div class="row">
@@ -60,7 +46,7 @@
                             <td><?php echo $n->descuento; ?></td>
                             <td><?php echo $n->estado == 1 ? 'Activo' :  'Desactivado' ?></td>
                             <td><?php echo $n->genero == 1 ? 'Caballero' :  'Dama' ?></td>
-                            <td><?php echo 'Editar/Eliminar' ?></td>
+                            <td><a href="#" title="Editar"><i class="fa fa-edit"></i></a> / <a href="#" title="Desactivar"><i class="fa fa-eye-slash"></i></a></td>
                         </tr>
 
                     <?php } ?>

@@ -3,7 +3,7 @@
         <div id="responsive-nav">
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="#" onClick="envioDatos('paginas','inicio');" >Inicio</a></li>
-                <li><a href="#" onClick="envioDatos('paginas','categorias');" >Categorias</a></li>
+                <li><a href="#" onClick="envioDatos('paginas','categorias');" >Productos</a></li>
                     <?php 
                         if(isset($_SESSION["sessionID"])){ 
                             if($_SESSION["user"]["idRol"] == 2){
