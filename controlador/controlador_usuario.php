@@ -13,21 +13,22 @@
             if($result){
                 echo "ok";
                 unset($_SESSION['sessionID']);
-                session_start();
                 $_SESSION["sessionID"]=session_id();
             } 
         }
         public function validarUsuario($usuario,$clave){
             $result = Usuario::validarUsuario($usuario,$clave);
-            $r = true;
+            $r = false;
+            $lst = array();
             foreach ( $result AS $n ) {
+                $lst = array("nombre"=>$n->nombre,"apellido"=>$n->apellido,"direccion"=>$n->direccion,"mail"=>$n->mail,"telefono"=>$n->telefono,"idRol"=>$n->idRol);
                 echo $n->idRol;
-                $r = false;
+                $r = true;
             };
             if($r){
                 unset($_SESSION['sessionID']);
-                session_start();
                 $_SESSION["sessionID"]=session_id();
+                $_SESSION["user"]=$lst;
             }
         }
         public function cerrarSession(){

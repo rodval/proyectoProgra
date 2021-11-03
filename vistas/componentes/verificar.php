@@ -22,21 +22,21 @@
                         <h3 class="title">Datos de envio</h3>
                     </div>
                     <div class="order-summary">
-                        <div class="form-group">
-                            <input class="input" type="text" id="nombre" placeholder="Nombre">
-                        </div>
-                        <div class="form-group">
-                            <input class="input" type="text" id="apellido" placeholder="Apellido">
-                        </div>
-                        <div class="form-group">
-                            <input class="input" type="text" id="direccion" placeholder="Direccion">
-                        </div>
-                        <div class="form-group">
-                            <input class="input" type="text" id="mail" placeholder="Correo electronico">
-                        </div>
-                        <div class="form-group">
-                            <input class="input" type="text" id="telefono" placeholder="Telefono">
-                        </div>
+							<div class="form-group">
+								<input class="input" type="text" id="nombre" placeholder="Nombre" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["nombre"] : ""; ?>>
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" id="apellido" placeholder="Apellido" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["apellido"] : ""; ?>>
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" id="direccion" placeholder="Direccion" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["direccion"] : ""; ?>>
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" id="mail" placeholder="Correo electronico" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["mail"] : ""; ?>>
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" id="telefono" placeholder="Telefono" value = <?php echo isset($_SESSION["user"]) ? $_SESSION["user"]["telefono"] : ""; ?>>
+							</div>
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
 	
 								<div class="order-col">
 									
-									<div><a href=#><i class="fa fa-times-circle"></i></a></div>
+									<?php if($guardarDato) { ?><div><a href=# onClick= <?php echo "envioDatos('paginas','procesarCompra','guardarDato=true&quitarDato=true&producto=".$key."');" ?> ><i class="fa fa-times-circle"></i></a></div><?php } ?>
 									<div value=""> <?php echo $value["cantidad"]." x "; foreach($articulo as $n){ echo $n->articulo." / ".$n->marca; ?> </div>
 									<div>
 										<?php 
@@ -71,10 +71,8 @@
 									</div>
 								</div>
 	
-							<?php 
-								
+							<?php
 								}
-
 							?>
 
 						</div>

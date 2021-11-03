@@ -64,7 +64,7 @@
                     $usuario['idRol']
                 );
             }
-            return $listaArticulo;
+            return $listaUsuario;
         }
     }
 ?>

@@ -32,21 +32,16 @@ function envioDatos(controlador,accion,datos){
     });
 }
 
-function envioCampos(controlador,accion,context,array){
-
+function envioCampos(controlador,accion,context){
     var selector = "."+context.id;
     var inp = document.querySelectorAll(selector);
     var str;
 
-    if(array){
+    str = context.value;
+    inp.forEach(function(e){
+        str = str + "&" + e.name.toString() + "=" + e.value.toString();
+    });
         
-    } else {
-        str = context.value;
-        inp.forEach(function(e){
-            str = str + "&" + e.name.toString() + "=" + e.value.toString();
-        });
-    }
-
     $.ajax({
         type: "POST",
         url: "?controlador=" + controlador + "&accion=" + accion,

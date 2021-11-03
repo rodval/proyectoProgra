@@ -45,19 +45,27 @@
                     <div class="producto">
                         <div class="producto-img">
                             <img src= <?php echo ("img/" . $n->image); ?> alt="">
-                            <div class="producto-label">
-                                <span class="sale"><?php echo "-" . $n->descuento . "%"; ?></span>
-                            </div>
+                            
+                            <?php if($n->descuento > 0) { ?>
+                                <div class="producto-label">
+                                    <span class="sale"><?php echo "-" . $n->descuento . "%"; ?></span>
+                                </div>
+                            <?php } ?>
+                            
                         </div>
                         <div class="producto-body">
                             <p class="producto-categoria"> <?php echo $n->categoria . " / ". $n->marca; ?> </p>
                             <h3 class="producto-nombre"><b> <?php echo $n->articulo; ?> </b></h3>
                             <h4 class="producto-precio"> 
+                                
                                 <?php
                                     $precioAct = $n->precio - (($n->precio) * ($n->descuento / 100));
                                     echo ("$" . round($precioAct, 2)); 
+                                    if($n->descuento > 0) {
                                 ?> 
-                                <del class="product-old-precio"><?php echo ("$" . $n->precio); ?></del>
+                                    <del class="product-old-precio"><?php echo ("$" . $n->precio); ?></del>
+                                <?php } ?>
+
                             </h4>
                             <div class="producto-line"></div>
                             <div class="producto-btn">

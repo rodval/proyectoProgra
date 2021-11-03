@@ -10,27 +10,20 @@
             $accion=$_GET['accion'];
         }
     }
-
-    if($controlador != "paginas" && $accion != "categorias"){
-        session_unset('marca');
-        session_unset('categoria');
-    }
-
+    
     $guardarDato=isset($_POST['guardarDato']) ? $_POST['guardarDato'] : false ;
+
+    $quitarDato=isset($_POST['quitarDato']) ? $_POST['quitarDato'] : false ;
 
     $genero=isset($_POST['genero']) ? $_POST['genero'] : null ;
     $producto=isset($_POST['producto']) ? $_POST['producto'] : null ;
-
-    $preciomin=isset($_POST['preciomin']) ? $_POST['preciomin'] : null ;
-    $preciomax=isset($_POST['preciomax']) ? $_POST['preciomax'] : null ;
-
-    $categoria=isset($_POST['categoria']) ? $_POST['categoria'] : null ;
-    $marca=isset($_POST['marca']) ? $_POST['marca'] : null ;
+    $buscador=isset($_POST['buscador']) ? $_POST['buscador'] : "" ;
 
     $cantidad=isset($_POST['cantidad']) ? $_POST['cantidad'] : null ;
     $talla=isset($_POST['talla']) ? $_POST['talla'] : null ;
 
-    $buscador=isset($_POST['buscador']) ? $_POST['buscador'] : "" ;
+    $categoria=isset($_POST['categoria']) ? $_POST['categoria'] : null ;
+    $marca=isset($_POST['marca']) ? $_POST['marca'] : null ;
 
     $usuario=isset($_POST['usuario']) ? $_POST['usuario'] : null ;
     $clave=isset($_POST['clave']) ? $_POST['clave'] : null ;
@@ -53,6 +46,10 @@
             $_SESSION["carritoCompraB"]=array();
             array_push($_SESSION["carritoCompraB"],$pr);
         }
+    }
+
+    if($quitarDato && $producto){
+        unset($_SESSION["carritoCompraG"][$producto]);
     }
 
     $carrito=isset($_SESSION['carritoCompraG']) ? count($_SESSION['carritoCompraG']) : 0 ;

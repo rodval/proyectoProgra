@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="css/viewer.css">
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script type="text/javascript" src="js/envioAJAX.js"></script>
+		<script type="text/javascript" src="js/operaciones.js"></script>
     </head>
 	<!--
 		Las clases: 
