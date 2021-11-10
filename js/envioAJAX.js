@@ -49,7 +49,7 @@ function envioCampos(controlador,accion,context){
         url: "?controlador=" + controlador + "&accion=" + accion,
         data: str,
         success:function(data) {
-            if(controlador == "usuario"){
+            if(controlador == "usuario" || controlador == "producto"){
                 inicio();
             } else {
                 document.getElementsByTagName("html")[0].innerHTML = data;

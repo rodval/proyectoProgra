@@ -16,8 +16,16 @@
     $quitarDato=isset($_POST['quitarDato']) ? $_POST['quitarDato'] : false ;
 
     $genero=isset($_POST['genero']) ? $_POST['genero'] : null ;
+    $codigo=isset($_POST['codigo']) ? $_POST['codigo'] : null ;
+    
+    $estadoProducto=isset($_POST['estadoProducto']) ? $_POST['estadoProducto'] : null ;
+    
     $producto=isset($_POST['producto']) ? $_POST['producto'] : null ;
     $buscador=isset($_POST['buscador']) ? $_POST['buscador'] : "" ;
+
+    $descuento=isset($_POST['descuento']) ? $_POST['descuento'] : "" ;
+    $descripcion=isset($_POST['descripcion']) ? $_POST['descripcion'] : "" ;
+    $precio=isset($_POST['precio']) ? $_POST['precio'] : "" ;
 
     $cantidad=isset($_POST['cantidad']) ? $_POST['cantidad'] : null ;
     $talla=isset($_POST['talla']) ? $_POST['talla'] : null ;

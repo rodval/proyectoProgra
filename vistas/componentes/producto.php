@@ -90,7 +90,7 @@
                                     </div>	
                                     <br>
                                     <div class="add-carrito">
-                                        <button class="add-carrito-btn" id="inp" value= <?php echo "producto=".$n->idArticulo ?> onClick= <?php echo "envioCampos('paginas','procesarCompra',this);" ?> >
+                                        <button class="add-carrito-btn" id="inp" value= <?php echo "producto=".$n->idArticulo ?> onClick= "envioCampos('paginas','procesarCompra',this);">
                                             <i class="fa fa-shopping-bag"></i> Comprar ahora 
                                         </button>
                                     </div>            

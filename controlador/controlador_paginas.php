@@ -43,12 +43,28 @@
             include_once("vistas/componentes/login.php");
             include_once("vistas/componentes/footer.php");
         }
-        public function verificarProducto($carrito){
+        public function tablePedidos($carrito){
+            $articulo = Articulo::listarArticuloTable();
+            $categoria = Categoria::listarCategoria();
+            include_once("vistas/componentes/header.php");
+            include_once("vistas/componentes/menu.php");
+            include_once("vistas/componentes/listaPedidos.php");
+            include_once("vistas/componentes/footer.php");
+        }
+        public function tableProductos($carrito){
             $articulo = Articulo::listarArticuloTable();
             $categoria = Categoria::listarCategoria();
             include_once("vistas/componentes/header.php");
             include_once("vistas/componentes/menu.php");
             include_once("vistas/componentes/listaProducto.php");
+            include_once("vistas/componentes/footer.php");
+        }
+        public function adminProducto($carrito){
+            $categoria = Categoria::listarCategoria();
+            $marca = Marca::listarMarca();
+            include_once("vistas/componentes/header.php");
+            include_once("vistas/componentes/menu.php");
+            include_once("vistas/componentes/adminProducto.php");
             include_once("vistas/componentes/footer.php");
         }
         public function procesarCompra($carrito,$genero,$buscador,$producto,$guardarDato){

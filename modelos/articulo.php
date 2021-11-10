@@ -162,10 +162,16 @@
             return $listaArticulo;
         }
 
-        public static function agregarArticulo($idCategoria,$codigo,$articulo,$precio,$cantidad,$descripcion,$idMarca){
+        public static function agregarArticulo($categoria,$codigo,$producto,$precio,$cantidad,$descripcion,$marca,$descuento,$genero){
             $conexion = BD::crearInstancia();
-            $sql = $conexion->prepare("INSERT INTO articulo(idCategoria,codigo,articulo,precio,cantidad,descripcion,estado,idMarca) VALUES (?,?,?,?,?,?,?,?)");
-            $sql->execute(array($idCategoria,$codigo,$articulo,$precio,$cantidad,$descripcion,1,$idMarca));
+            $sql = $conexion->prepare("INSERT INTO articulo(idCategoria,codigo,articulo,precio,cantidad,descripcion,estado,idMarca,descuento,genero) VALUES (?,?,?,?,?,?,?,?,?,?)");
+            $sql->execute(array($categoria,$codigo,$producto,$precio,$cantidad,$descripcion,1,$marca,$descuento,$genero));
+        }
+
+        public static function estadoArticulo($estadoProducto,$producto){
+            $conexion = BD::crearInstancia();
+            $sql = $conexion->prepare("UPDATE articulo SET estado = ? WHERE idArticulo = ?");
+            $sql->execute(array($estadoProducto,$producto));
         }
     }
 ?>

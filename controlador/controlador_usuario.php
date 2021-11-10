@@ -11,7 +11,6 @@
         public function agregarUsuario($usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono){
             $result = Usuario::agregarUsuario($usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono,2);
             if($result){
-                echo "ok";
                 unset($_SESSION['sessionID']);
                 $_SESSION["sessionID"]=session_id();
             } 

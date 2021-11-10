@@ -5,7 +5,7 @@
             <div class="aside">
                 <div class="producto-btn">
                     <div class="add-carrito">
-                        <button class="add-carrito-btn"><i class="fa fa-filter"></i> Agregar producto </button>
+                        <button class="add-carrito-btn" onClick="envioDatos('paginas','adminProducto');"><i class="fa fa-plus"></i> Agregar producto </button>
                     </div>									
                 </div>
             </div>
@@ -46,7 +46,7 @@
                             <td><?php echo $n->descuento; ?></td>
                             <td><?php echo $n->estado == 1 ? 'Activo' :  'Desactivado' ?></td>
                             <td><?php echo $n->genero == 1 ? 'Caballero' :  'Dama' ?></td>
-                            <td><a href="#" title="Editar"><i class="fa fa-edit"></i></a> / <a href="#" title="Desactivar"><i class="fa fa-eye-slash"></i></a></td>
+                            <td><a href="#" title="Editar"><i class="fa fa-edit"></i></a> / <a href="#" title="Desactivar" onClick= <?php echo "envioDatos('producto','estadoProducto','estadoProducto=0&producto=".$n->idArticulo."');"; ?> ><i class="fa fa-eye-slash"></i></a></td>
                         </tr>
 
                     <?php } ?>

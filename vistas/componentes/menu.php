@@ -8,11 +8,12 @@
                         if(isset($_SESSION["sessionID"])){ 
                             if($_SESSION["user"]["idRol"] == 2){
                     ?>
-                            <li><a href="#"  onClick="envioDatos('paginas','categorias');" >Mis pedidos</a></li>
+                        <li><a href="#"  onClick="envioDatos('paginas','categorias');" >Mis pedidos</a></li>
                     <?php
                             } else {
                     ?>
-                            <li><a href="#"  onClick="envioDatos('paginas','verificarProducto');" >Adm. producto</a></li>
+                        <li><a href="#"  onClick="envioDatos('paginas','tableProductos');" >Pedidos</a></li>
+                        <li><a href="#"  onClick="envioDatos('paginas','tableProductos');" >Adm. producto</a></li>
                     <?php
                             }
                         } 
