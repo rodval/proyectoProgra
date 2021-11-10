@@ -8,14 +8,14 @@
     BD::crearInstancia();
 
     class ControladorUsuario{
-        public function agregarUsuario($usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono){
+        public function agregarUsuario($guardarDato,$precio,$usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono){
             $result = Usuario::agregarUsuario($usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono,2);
             if($result){
                 unset($_SESSION['sessionID']);
                 $_SESSION["sessionID"]=session_id();
             } 
         }
-        public function validarUsuario($usuario,$clave){
+        public function validarUsuario($guardarDato,$precio,$usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono){
             $result = Usuario::validarUsuario($usuario,$clave);
             $r = false;
             $lst = array();

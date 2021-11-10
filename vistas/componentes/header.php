@@ -24,8 +24,8 @@
                 <div class="col-md-6">
                     <div class="header-buscar">
                         <div class="buscador-container">
-                            <input class="input inp" name="buscador" placeholder="Que articulo buscas?">
-                            <button id="inp" onClick="envioCampos('paginas','categorias',this);" class="btn-buscar">Buscar</button>
+                            <input class="input inp0" name="buscador" placeholder="Que articulo buscas?">
+                            <button id="inp0" onClick="envioCampos('paginas','categorias',this);" class="btn-buscar">Buscar</button>
                         </div>
                     </div>
                 </div>

@@ -6,8 +6,6 @@ function envioDatos(controlador,accion,datos){
         success:function(data) {
             if(controlador == "usuario"){
                 inicio();
-            } else if(controlador == "compra"){
-                //inicio();
             } else {
                 document.getElementsByTagName("html")[0].innerHTML = data;
             }
@@ -37,25 +35,35 @@ function envioDatos(controlador,accion,datos){
 function envioCampos(controlador,accion,context){
     var selector = "."+context.id;
     var inp = document.querySelectorAll(selector);
-    var str;
+    var str,envio = true;
 
-    str = context.value;
-    inp.forEach(function(e){
-        str = str + "&" + e.name.toString() + "=" + e.value.toString();
-    });
-        
-    $.ajax({
-        type: "POST",
-        url: "?controlador=" + controlador + "&accion=" + accion,
-        data: str,
-        success:function(data) {
-            if(controlador == "usuario" || controlador == "producto"){
-                inicio();
+    try {
+        inp.forEach(function(e){
+            if(e.value == '' || e.value == null){
+                e.setAttribute('style','border: 2px solid red;')
             } else {
-                document.getElementsByTagName("html")[0].innerHTML = data;
+                str = str + "&" + e.name.toString() + "=" + e.value.toString();
             }
-        }
-    });
+        })
+    }catch(e){
+        accion = false;
+        console.log('Ocurrio un error interno');
+    }
+
+    if(envio){
+        $.ajax({
+            type: "POST",
+            url: "?controlador=" + controlador + "&accion=" + accion,
+            data: str,
+            success:function(data) {
+                if(controlador == "usuario" || controlador == "producto" || controlador == "compra"){
+                    inicio();
+                } else {
+                    document.getElementsByTagName("html")[0].innerHTML = data;
+                }
+            }
+        });
+    }
 }
 
 function inicio(){
@@ -68,3 +76,4 @@ function inicio(){
         }
     });
 }
+

@@ -9,31 +9,31 @@
                     </div>
                     <div class="order-summary">
                         <div class="form-group">
-                            <input class="input inp" type="text" name="nombre" placeholder="Nombre">
+                            <input class="input inp1" type="text" name="nombre" placeholder="Nombre">
                         </div>
                         <div class="form-group">
-                            <input class="input inp" type="text" name="apellido" placeholder="Apellido">
+                            <input class="input inp1" type="text" name="apellido" placeholder="Apellido">
                         </div>
                         <div class="form-group">
-                            <input class="input inp" type="text" name="direccion" placeholder="Direccion">
+                            <input class="input inp1" type="text" name="direccion" placeholder="Direccion">
                         </div>
                         <div class="form-group">
-                            <input class="input inp" type="text" name="mail" placeholder="Correo electronico">
+                            <input class="input inp1" type="text" name="mail" placeholder="Correo electronico">
                         </div>
                         <div class="form-group">
-                            <input class="input inp" type="text" name="telefono" placeholder="Telefono">
+                            <input class="input inp1" type="text" name="telefono" placeholder="Telefono">
                         </div>
                         <div class="form-group">
-                            <input class="input inp" type="text" name="usuario" placeholder="Usuario">
+                            <input class="input inp1" type="text" name="usuario" placeholder="Usuario">
                         </div>
                         <div class="form-group">
-                            <input class="input inp" type="text" name="clave" placeholder="Clave">
+                            <input class="input inp1" type="text" name="clave" placeholder="Clave">
                         </div>
                         <div class="form-group">
-                            <input class="input inp" type="text"name="clave2" placeholder="Confirmar clave">
+                            <input class="input inp1" type="text"name="clave2" placeholder="Confirmar clave">
                         </div>
                     </div>
-                    <a href="#" class="primary-btn order-submit" value="" onClick="envioCampos('usuario','agregarUsuario',this);" >Registrarse</a>
+                    <a href="#" class="primary-btn order-submit" id="inp1" value="n=1" onClick="envioCampos('usuario','agregarUsuario',this);" >Registrarse</a>
                 </div>
 
                 <div class="col-md-5 order-details">
@@ -45,7 +45,7 @@
                             <input class="input inp2" type="text" name="usuario" placeholder="Usuario">
                         </div>
                         <div class="form-group">
-                            <input class="input inp2" type="text" name="clave" placeholder="Clave">
+                            <input class="input inp2" type="password" name="clave" placeholder="Clave">
                         </div>
                     </div>
                     <a href="#" class="primary-btn order-submit" id="inp2" value="n=1" onClick="envioCampos('usuario','validarUsuario',this);">Iniciar sesion</a>

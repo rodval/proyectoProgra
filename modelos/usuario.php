@@ -44,6 +44,19 @@
             return false;
         }
 
+        public static function agregarRegistroCliente($nombre,$apellido,$direccion,$mail,$telefono){
+            $conexion = BD::crearInstancia();
+            $sql = $conexion->prepare("INSERT INTO usuario(nombre,apellido,direccion,mail,telefono,idRol) VALUES (?,?,?,?,?,?)");
+            $sql->execute(array($nombre,$apellido,$direccion,$mail,$telefono,3));
+            $id = $conexion->lastInsertId();
+
+            if($sql){
+                return $id;
+            }
+
+            return false;
+        }
+
         public static function validarUsuario($usuario,$clave){
             $listaUsuario=[];
             $conexion = BD::crearInstancia();

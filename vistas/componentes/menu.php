@@ -6,13 +6,11 @@
                 <li><a href="#" onClick="envioDatos('paginas','categorias');" >Productos</a></li>
                     <?php 
                         if(isset($_SESSION["sessionID"])){ 
-                            if($_SESSION["user"]["idRol"] == 2){
                     ?>
-                        <li><a href="#"  onClick="envioDatos('paginas','categorias');" >Mis pedidos</a></li>
+                        <li><a href="#"  onClick="envioDatos('paginas','tablePedidos');" >Pedidos</a></li>
                     <?php
-                            } else {
+                            if($_SESSION["user"]["idRol"] == 1){
                     ?>
-                        <li><a href="#"  onClick="envioDatos('paginas','tableProductos');" >Pedidos</a></li>
                         <li><a href="#"  onClick="envioDatos('paginas','tableProductos');" >Adm. producto</a></li>
                     <?php
                             }

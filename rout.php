@@ -1,12 +1,12 @@
 <?php
     include_once("controlador/controlador_".$controlador.".php");
     $objControlador="Controlador".ucfirst($controlador);
-    if($controlador == "usuario" || $controlador == "compra"){
+    if($controlador == "usuario"){
         $controlador = new $objControlador();
-        $controlador->$accion($usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono);
-    } else if($controlador == "producto" ) {
+        $controlador->$accion($guardarDato,$precio,$usuario,$clave,$nombre,$apellido,$direccion,$mail,$telefono);
+    } else if($controlador == "compra"){
         $controlador = new $objControlador();
-        $controlador->$accion($estadoProducto,$categoria,$codigo,$producto,$precio,$cantidad,$descripcion,$marca,$descuento,$genero);
+        $controlador->$accion($guardarDato,$precio,$nombre,$apellido,$direccion,$mail,$telefono);
     } else {
         $controlador = new $objControlador();
         $controlador->$accion($carrito,$genero,$buscador,$producto,$guardarDato);

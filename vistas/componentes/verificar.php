@@ -81,7 +81,11 @@
 							<div><strong class="order-total"><?php echo "$".$total; ?></strong></div>
 						</div>
 					</div>
-					<a href="#" class="primary-btn order-submit" id="inp" onClick= <?php echo isset($_SESSION["user"]) ? "envioDatos('compra','agregarCompra');" : "envioCampos('paginas','agregarCompra',this);" ?> >Procesar compra</a>
+					<div class="add-carrito">
+						<button class="add-carrito-btn" id="inp" value= <?php echo "precio=".$total."&guardarDato=".$guardarDato; ?> onClick= <?php echo "envioCampos('compra','agregarCompra',this);" ?> >
+							<i class="fa fa-shopping-bag"></i> Procesar compra
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
