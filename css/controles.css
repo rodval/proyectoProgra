@@ -40,7 +40,7 @@
 }
 
 .descripcionSitio .descripcionSitio-tree li a:hover {
-  color: #D10024;
+  color: #C08E32;
 }
 
 /* Input */
@@ -151,8 +151,8 @@
 }
 
 .input-checkbox .check:checked+label span {
-  background-color: #D10024;
-  border-color: #D10024;
+  background-color: #C08E32;
+  border-color: #C08E32;
 }
 
 .input-checkbox input[type="checkbox"]:checked+label span:after {
@@ -247,7 +247,7 @@ label small {
 .primary-btn {
   display: inline-block;
   padding: 12px 30px;
-  background-color: #D10024;
+  background-color: #C08E32;
   border: none;
   border-radius: 40px;
   color: #FFF;
