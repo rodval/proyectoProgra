@@ -1,58 +1,86 @@
 <div class="section">
 	<div class="container">
 		<div class="row">
-
-            <div class="aside">
-                <div class="producto-btn">
-                    <div class="add-carrito">
-                        <button class="add-carrito-btn" onClick="envioDatos('paginas','adminProducto');"><i class="fa fa-plus"></i> Agregar producto </button>
-                    </div>									
-                </div>
-            </div>
-
-            <br>
-            <br>
             
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Codigo</th>
-                        <th scope="col">Articulo</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Marca</th>
-                        <th scope="col">Descripcion</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Descuento</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Genero</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <?php
+                if($_SESSION["user"]["idRol"] == 1){
+            ?>
 
-                    <?php foreach($articulo as $n) { ?>
-
+                <table class="table">
+                    <thead>
                         <tr>
-                            <th scope="row"><?php echo $n->idArticulo; ?></th>
-                            <td><?php echo $n->codigo; ?></td>
-                            <td><?php echo $n->articulo; ?></td>
-                            <td><?php echo $n->categoria; ?></td>
-                            <td><?php echo $n->marca; ?></td>
-                            <td><?php echo $n->descripcion; ?></td>
-                            <td><?php echo $n->cantidad; ?></td>
-                            <td><?php echo $n->precio; ?></td>
-                            <td><?php echo $n->descuento; ?></td>
-                            <td><?php echo $n->estado == 1 ? 'Activo' :  'Desactivado' ?></td>
-                            <td><?php echo $n->genero == 1 ? 'Caballero' :  'Dama' ?></td>
-                            <td><a href="#" title="Editar"><i class="fa fa-edit"></i></a> / <a href="#" title="Desactivar" onClick= <?php echo "envioDatos('producto','estadoProducto','estadoProducto=0&producto=".$n->idArticulo."');"; ?> ><i class="fa fa-eye-slash"></i></a></td>
+                            <th scope="col">#</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Direccion</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Mail</th>
+                            <th scope="col">N° de comprobante</th>
+                            <th scope="col">Fecha compra</th>
+                            <th scope="col">Monto cancelado</th>
+                            <th scope="col">Articulos</th>
                         </tr>
+                    </thead>
+                    <tbody>
 
-                    <?php } ?>
+                        <?php foreach($compra as $n) { ?>
 
-                </tbody>
-            </table>
+                            <tr>
+                                <th scope="row"><?php echo $n->idVenta; ?></th>
+                                <td><?php echo $n->nombre." ".$n->apellido; ?></td>
+                                <td><?php echo $n->direccion; ?></td>
+                                <td><?php echo $n->telefono; ?></td>
+                                <td><?php echo $n->mail; ?></td>
+                                <td><?php echo $n->comprobante; ?></td>
+                                <td><?php echo date('d-m-Y', $n->fecha); ?></td>
+                                <td><?php echo $n->total; ?></td>
+                                <td><?php echo $n->articulos; ?></td>
+                            </tr>
+
+                        <?php } ?>
+
+                    </tbody>
+                </table>
+
+            <?php
+                } else if($_SESSION["user"]["idRol"] == 2){
+            ?>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Direccion</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Mail</th>
+                            <th scope="col">N° de comprobante</th>
+                            <th scope="col">Fecha compra</th>
+                            <th scope="col">Monto cancelado</th>
+                            <th scope="col">Articulos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php foreach($compra as $n) { ?>
+
+                            <tr>
+                                <th scope="row"><?php echo $n->idVenta; ?></th>
+                                <td><?php echo $n->direccion; ?></td>
+                                <td><?php echo $n->telefono; ?></td>
+                                <td><?php echo $n->mail; ?></td>
+                                <td><?php echo $n->comprobante; ?></td>
+                                <td><?php echo date("d-m-Y", strtotime($n->fecha)); ?></td>
+                                <td><?php echo $n->total; ?></td>
+                                <td><?php echo $n->articulos; ?></td>
+                            </tr>
+
+                        <?php } ?>
+
+                    </tbody>
+                </table>
+
+            <?php
+                }
+            ?>
 
         </div>
     </div>

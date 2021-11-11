@@ -35,7 +35,7 @@ function envioDatos(controlador,accion,datos){
 function envioCampos(controlador,accion,context){
     var selector = "."+context.id;
     var inp = document.querySelectorAll(selector);
-    var str,envio = true;
+    var str = context.value,envio = true;
 
     try {
         inp.forEach(function(e){

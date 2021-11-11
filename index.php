@@ -51,8 +51,12 @@
         }
     }
 
-    if($quitarDato && $producto){
+    if($quitarDato && $producto != null){
         unset($_SESSION["carritoCompraG"][$producto]);
+        if(count($_SESSION["carritoCompraG"]) == 0){
+            $controlador="paginas";
+            $accion="inicio";
+        }
     }
 
     $carrito=isset($_SESSION['carritoCompraG']) ? count($_SESSION['carritoCompraG']) : 0 ;

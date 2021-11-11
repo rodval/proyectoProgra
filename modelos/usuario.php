@@ -60,12 +60,12 @@
         public static function validarUsuario($usuario,$clave){
             $listaUsuario=[];
             $conexion = BD::crearInstancia();
-            $sql = $conexion->prepare("SELECT nombre,apellido,direccion,mail,telefono,idRol FROM usuario WHERE usuario = ? AND clave = ? ");
+            $sql = $conexion->prepare("SELECT idUsuario,nombre,apellido,direccion,mail,telefono,idRol FROM usuario WHERE usuario = ? AND clave = ? ");
             $sql->execute(array($usuario,$clave));
 
             foreach($sql->fetchAll() as $usuario){
                 $listaUsuario[] = new Usuario(
-                    null,
+                    $usuario['idUsuario'],
                     null,
                     null,
                     $usuario['nombre'],

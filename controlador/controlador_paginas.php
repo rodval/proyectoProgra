@@ -5,6 +5,7 @@
     include_once("modelos/marca.php");
     include_once("modelos/talla.php");
     include_once("modelos/imagen_articulo.php");
+    include_once("modelos/compra.php");
     include_once("conexion.php");
 
     BD::crearInstancia();
@@ -45,7 +46,8 @@
         }
         public function tablePedidos($carrito){
             $articulo = Articulo::listarArticuloTable();
-            $categoria = Categoria::listarCategoria();
+            $usuario = $_SESSION["user"]["idRol"] != 1 ? $_SESSION["user"]["idUsuario"] : null;
+            $compra = Compra::listarPedidos($usuario);
             include_once("vistas/componentes/header.php");
             include_once("vistas/componentes/menu.php");
             include_once("vistas/componentes/listaPedidos.php");
@@ -61,14 +63,12 @@
         }
         public function adminProducto($carrito){
             $categoria = Categoria::listarCategoria();
-            $marca = Marca::listarMarca();
             include_once("vistas/componentes/header.php");
             include_once("vistas/componentes/menu.php");
             include_once("vistas/componentes/adminProducto.php");
             include_once("vistas/componentes/footer.php");
         }
         public function procesarCompra($carrito,$genero,$buscador,$producto,$guardarDato){
-            $categoria = Categoria::listarCategoria();
             $lstArticulo = $guardarDato ? $_SESSION["carritoCompraG"] : $_SESSION["carritoCompraB"];
             include_once("vistas/componentes/header.php");
             include_once("vistas/componentes/verificar.php");
