@@ -8,7 +8,7 @@
 
     class ControladorCompra{
         public function agregarCompra($guardarDato,$precio,$nombre,$apellido,$direccion,$mail,$telefono){
-            $instanciaUsuario = Usuario::agregarRegistroCliente($nombre,$apellido,$direccion,$mail,$telefono);
+            $instanciaUsuario = $_SESSION["user"] ? $_SESSION["user"]["idUsuario"] : Usuario::agregarRegistroCliente($nombre,$apellido,$direccion,$mail,$telefono);
             if($instanciaUsuario){
                 $instanciaVenta = Compra::agregarVenta($instanciaUsuario,$precio,$nombre,$apellido);
                 if($instanciaVenta){

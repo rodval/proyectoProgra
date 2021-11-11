@@ -43,7 +43,7 @@
 				<!-- Order Details -->
 				<div class="col-md-5 order-details">
 					<div class="section-title text-center">
-						<h3 class="title">DETALLE COMPRA</h3>
+						<h3 class="title">Detalle de compra</h3>
 					</div>
 					<div class="order-summary">
 						<div class="order-col">
@@ -82,7 +82,7 @@
 						</div>
 					</div>
 					<div class="add-carrito">
-						<button class="add-carrito-btn" id="inp" value= <?php echo "precio=".$total."&guardarDato=".$guardarDato; ?> onClick= <?php echo "envioCampos('compra','agregarCompra',this);" ?> >
+						<button class="add-carrito-btn" id="inp" value= <?php echo "precio=".$total."&guardarDato=".$guardarDato; ?> onClick= <?php echo "envioCampos('compra','agregarCompra',this,true);" ?> >
 							<i class="fa fa-shopping-bag"></i> Procesar compra
 						</button>
 					</div>

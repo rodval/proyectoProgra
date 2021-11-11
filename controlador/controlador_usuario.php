@@ -20,7 +20,7 @@
             $r = false;
             $lst = array();
             foreach ( $result AS $n ) {
-                $lst = array("nombre"=>$n->nombre,"apellido"=>$n->apellido,"direccion"=>$n->direccion,"mail"=>$n->mail,"telefono"=>$n->telefono,"idRol"=>$n->idRol);
+                $lst = array("idUsuario"=>$n->idUsuario,"nombre"=>$n->nombre,"apellido"=>$n->apellido,"direccion"=>$n->direccion,"mail"=>$n->mail,"telefono"=>$n->telefono,"idRol"=>$n->idRol);
                 echo $n->idRol;
                 $r = true;
             };
