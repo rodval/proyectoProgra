@@ -31,7 +31,7 @@
                                 <td><?php echo $n->telefono; ?></td>
                                 <td><?php echo $n->mail; ?></td>
                                 <td><?php echo $n->comprobante; ?></td>
-                                <td><?php echo date('d-m-Y', $n->fecha); ?></td>
+                                <td><?php echo date("d-m-Y", strtotime($n->fecha));  ?></td>
                                 <td><?php echo $n->total; ?></td>
                                 <td><?php echo $n->articulos; ?></td>
                             </tr>

@@ -63,6 +63,7 @@
         }
         public function adminProducto($carrito){
             $categoria = Categoria::listarCategoria();
+            $marca = Marca::listarMarca();
             include_once("vistas/componentes/header.php");
             include_once("vistas/componentes/menu.php");
             include_once("vistas/componentes/adminProducto.php");

@@ -43,6 +43,7 @@ function envioCampos(controlador,accion,context,print){
                 e.setAttribute('style','border: 2px solid red;')
             } else {
                 envio = true;
+                e.setAttribute('value',e.value.toString());
                 str = str + "&" + e.name.toString() + "=" + e.value.toString();
             }
         })
