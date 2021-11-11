@@ -54,49 +54,9 @@
 
 					</div>
 				</div>
-
-				<!-- 
-					<div class="aside">
-						<h3 class="aside-title">Precio</h3>
-						<div class="price-filter">
-							<div class="input-number price-min">
-								<input class="price inp" name="preciomin" type="number" placeholder="Min.">
-							</div>
-							<span>-</span>
-							<div class="input-number price-max">
-								<input class="price inp" name="preciomax" type="number" placeholder="Max.">
-							</div>
-						</div>
-					</div>
-
-				
-					<div class="aside">
-						<div class="producto-btn">
-							<div class="add-carrito">
-								<button class="add-carrito-btn" id="inp" onClick="envioCampos('paginas','categorias',this);"><i class="fa fa-filter"></i> Filtrar </button>
-							</div>									
-						</div>
-					</div>
-				-->
-
 			</div>
 			
-			<div id="store" class="col-md-9">
-				
-				<!-- 
-					<div class="store-filter clearfix">
-						<div class="store-sort">
-							<label>
-								Ordenar por:
-								<select class="input-select inp" name=>
-									<option value="0">Precio mas bajo</option>
-									<option value="1">Precio mas alto</option>
-								</select>
-							</label>
-						</div>
-					</div>
-				-->
-
+			<div class="col-md-9">
 				<div class="row">
 
 					<?php
@@ -118,14 +78,14 @@
 								<div class="producto-body">
 									<p class="producto-categoria"> <?php echo $n->categoria . " / ". $n->marca; ?> </p>
 									<h3 class="producto-nombre"><b> <?php echo $n->articulo; ?> </b></h3>
-									<h4 class="producto-precio"> 
+									<h4 class="precioActual"> 
 										
 										<?php
 											$precioAct = $n->precio - (($n->precio) * ($n->descuento / 100));
 											echo ("$" . round($precioAct, 2)); 
 											if($n->descuento > 0) {
 										?> 
-											<del class="product-old-precio"><?php echo ("$" . $n->precio); ?></del>
+											<del class="precioAnterior"><?php echo ("$" . $n->precio); ?></del>
 										<?php } ?>
 
 									</h4>

@@ -57,7 +57,7 @@
         }
 
         public static function agregarVenta($usuario,$precio,$nombre,$apellido){
-            $comprobante = (date("Y") . date("m") . date("d") . substr($nombre, 0, 1) . substr($apellido, 0, 1));
+            $comprobante = (date("Y") . date("m") . date("d") . date("s") . substr($nombre, 0, 1) . substr($apellido, 0, 1));
             $fecha = (date("Y-m-d H:i:s"));
 
             $conexion = BD::crearInstancia();

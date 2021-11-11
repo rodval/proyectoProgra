@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-10-2021 a las 05:47:08
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.5
+-- Tiempo de generación: 11-11-2021 a las 14:47:53
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,11 +46,11 @@ CREATE TABLE `articulo` (
 --
 
 INSERT INTO `articulo` (`idArticulo`, `idCategoria`, `codigo`, `articulo`, `precio`, `cantidad`, `descripcion`, `estado`, `idMarca`, `descuento`, `genero`) VALUES
-(1, 1, 'CM001', 'Camisa roja', '9.50', 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 1, 2, '5.00', 1),
-(2, 1, 'CM002', 'Camisa Vede', '9.75', 6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 1, 1, '10.00', 1),
-(3, 2, 'JN001', 'Blue Jeans', '11.60', 9, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 3, '38.00', 1),
-(4, 2, 'JN002', 'Black Jeans', '11.59', 3, 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 1, 2, '40.00', 0),
-(9, 3, 'VS001', 'Vestido Corto', '15.85', 6, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 7, '0.00', 1);
+(1, 1, 'CM001', 'Camisa roja', '9.50', 17, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 1, 2, '5.00', 1),
+(2, 1, 'CM002', 'Camisa Vede', '9.75', 16, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 1, 1, '10.00', 1),
+(3, 2, 'JN001', 'Blue Jeans', '11.60', 18, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 3, '38.00', 1),
+(4, 2, 'JN002', 'Black Jeans', '11.59', 13, 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 1, 2, '40.00', 1),
+(9, 3, 'VS001', 'Vestido Corto', '15.85', 15, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 7, '0.00', 0);
 
 -- --------------------------------------------------------
 
@@ -84,9 +84,19 @@ CREATE TABLE `detalle_venta` (
   `idArticulo` int(11) NOT NULL,
   `idVenta` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `precio` decimal(10,0) NOT NULL,
-  `descuento` decimal(10,0) NOT NULL
+  `precio` decimal(20,2) NOT NULL,
+  `idTallaArticulo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `detalle_venta`
+--
+
+INSERT INTO `detalle_venta` (`idDetalle`, `idArticulo`, `idVenta`, `cantidad`, `precio`, `idTallaArticulo`) VALUES
+(1, 1, 1, 1, '9.50', 1),
+(2, 2, 2, 1, '9.75', 4),
+(14, 3, 10, 1, '11.60', 5),
+(15, 9, 10, 1, '15.85', 1);
 
 -- --------------------------------------------------------
 
@@ -162,7 +172,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`idRol`, `rol`, `descripcion`, `estado`) VALUES
 (1, 'Administrador', 'Personal con permisos para acceder a los modulos administrativos de la plataforma.', 1),
-(2, 'Cliente', 'Personal con permisos unicamente para realizar acciones de compra en la plataforma.', 1);
+(2, 'Cliente', 'Personal con permisos unicamente para realizar acciones de compra en la plataforma.', 1),
+(3, 'Cliente sin usuario', 'Cliente sin usuario', 1);
 
 -- --------------------------------------------------------
 
@@ -210,7 +221,12 @@ INSERT INTO `talla_articulo` (`idTallaArticulo`, `idTalla`, `idArticulo`) VALUES
 (3, 3, 1),
 (4, 4, 2),
 (5, 5, 3),
-(6, 6, 4);
+(6, 6, 4),
+(7, 1, 9),
+(8, 1, 2),
+(9, 6, 3),
+(10, 5, 4),
+(11, 2, 9);
 
 -- --------------------------------------------------------
 
@@ -237,7 +253,9 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`idUsuario`, `usuario`, `clave`, `nombre`, `apellido`, `direccion`, `mail`, `telefono`, `estado`, `idRol`) VALUES
 (1, 'Admin', '123', 'Rod', 'Va', 'Col. Olimpica, psj \"E\" casa #546', 'rodrigovalladares1@gmail.com', '71526065', 1, 1),
-(2, 'usu1', '456', 'Al', 'Mej', 'Col. Guadalajara, psj \"H\" casa #589', 'rodrigovalladares1@gmail.com', '71526065', 1, 2);
+(2, 'ss3', '123', 'Al', 'Mej', 'Col. Guadalajara, psj \"H\" casa #589', 'rodrigovalladares1@gmail.com', '71526065', 1, 2),
+(14, '', '', 'Rodrigo Alejandro', 'Mejía', 'Col. Guadalupe Pasaje i #27 Soyapango San Salvador', 'rodrigovalladares1@gmail.com', '71526065', 0, 3),
+(15, '', '', 'Rodrigo Alejandro', 'Mejía', 'Col. Guadalupe Pasaje i #27 Soyapango San Salvador', 'rodrigovalladares1@gmail.com', '71526065', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -248,11 +266,20 @@ INSERT INTO `usuario` (`idUsuario`, `usuario`, `clave`, `nombre`, `apellido`, `d
 CREATE TABLE `venta` (
   `idVenta` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
-  `comprobante` varchar(200) NOT NULL,
+  `comprobante` varchar(25) NOT NULL,
   `fecha` datetime NOT NULL,
-  `total` decimal(10,0) NOT NULL,
+  `total` decimal(20,2) NOT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `venta`
+--
+
+INSERT INTO `venta` (`idVenta`, `idUsuario`, `comprobante`, `fecha`, `total`, `estado`) VALUES
+(1, 2, '0120211012RV', '2021-10-12 10:13:32', '19.25', 1),
+(2, 2, '0120211027RV', '2021-10-27 10:13:32', '11.60', 1),
+(10, 15, '20211110RM', '2021-11-10 18:16:44', '27.45', 1);
 
 --
 -- Índices para tablas volcadas
@@ -338,7 +365,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `imagen_articulo`
@@ -356,7 +383,7 @@ ALTER TABLE `marca`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `talla`
@@ -368,19 +395,19 @@ ALTER TABLE `talla`
 -- AUTO_INCREMENT de la tabla `talla_articulo`
 --
 ALTER TABLE `talla_articulo`
-  MODIFY `idTallaArticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idTallaArticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -13,7 +13,7 @@
                     <div class="form-group">
                         <input class="input inp" type="text" name="producto" placeholder="Producto">
                     </div>
-                    <div class="form-group product-options">
+                    <div class="form-group selectProducto">
                         <select class="input-select inp" name="categoria">
 
                             <?php
@@ -26,7 +26,7 @@
 
                         </select>
                     </div>
-                    <div class="form-group product-options">
+                    <div class="form-group selectProducto">
                         <select class="input-select inp" name="marca">
 
                             <?php
@@ -52,7 +52,7 @@
                         <input class="input inp" type="number" name="descuento" placeholder="Descuento">
                     </div>
 
-                    <div class="form-group product-options">
+                    <div class="form-group selectProducto">
                         <select class="input-select inp" name="genero">
                             <option value="0"> Femenino </option>
                             <option value="1"> Masculino </option>

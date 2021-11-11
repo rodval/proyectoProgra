@@ -5,8 +5,9 @@ function envioDatos(controlador,accion,datos){
         data: datos,
         success:function(data) {
             if(controlador == "usuario"){
-                inicio();
+                modal(1);
             } else {
+                loading();
                 document.getElementsByTagName("html")[0].innerHTML = data;
             }
             if(accion == "producto"){
@@ -40,6 +41,7 @@ function envioCampos(controlador,accion,context,print){
     try {
         inp.forEach(function(e){
             if(e.value == '' || e.value == null){
+                envio = false;
                 e.setAttribute('style','border: 2px solid red;')
             } else {
                 envio = true;
@@ -58,11 +60,14 @@ function envioCampos(controlador,accion,context,print){
             url: "?controlador=" + controlador + "&accion=" + accion,
             data: str,
             success:function(data) {
-                if(controlador == "usuario" || controlador == "producto"){
+                if(controlador == "usuario"){
+                    modal(1);
+                } else if(controlador == "producto"){ 
                     inicio();
                 } else if(controlador == "compra"){
-                    procesarCompra();
-                } else {
+                    modal(2);
+                } else {                    
+                    loading();
                     document.getElementsByTagName("html")[0].innerHTML = data;
                 }
             }
@@ -76,6 +81,7 @@ function inicio(){
         url: "?controlador=paginas&accion=inicio",
         data: "",
         success:function(data) {
+            loading();
             document.getElementsByTagName("html")[0].innerHTML = data;
         }
     });
@@ -86,4 +92,37 @@ function procesarCompra(){
     document.body.innerHTML = context;
     window.print();
     inicio();
+}
+
+function loading(){
+    setTimeout(function () {
+        $(".loading").css({visibility:"hidden",opacity:"0"})
+    }, 1000);
+}
+
+function modal(op){
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+
+    modal.style.display = "block";
+
+    span.onclick = function() {
+        modal.style.display = "none";
+        if(op == 1){
+            inicio();
+        } else if (op == 2){
+            procesarCompra();
+        }
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            if(op == 1){
+                inicio();
+            } else if (op == 2){
+                procesarCompra();
+            }
+        }
+    }
 }
