@@ -7,7 +7,12 @@
 		<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="../css/font-awesome.min.css">
 		<link type="text/css" rel="stylesheet" href="../css/main.css"/>
-        <link type="text/css" rel="stylesheet" href="../css/controls.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/controles.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/producto.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/carrito.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/loading.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/modal.css"/>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
 
 	<!--
@@ -23,8 +28,12 @@
 			<div class="top-header">
 				<div class="container">
 					<ul class="header-links pull-right">
-						<li><a href="#"><i class="fa fa-dollar"></i> Registrarse</a></li>
-						<li><a href="#"><i class="fa fa-user-o"></i> Iniciar sesion</a></li>
+						<li>
+							<a href="#">
+								<i class="fa fa-user"></i> 
+								<span> Registrarse / Iniciar session </span>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -40,229 +49,242 @@
 						</div>
 						<div class="col-md-6">
 							<div class="header-buscar">
-								<form>
-									<select class="input-select">
-										<option value="-1">Categoria</option>
-										<option value="1">Categoria 01</option>
-										<option value="2">Categoria 02</option>
-									</select>
-									<input class="input">
-									<button class="btn-buscar">Buscar</button>
-								</form>
+								<div class="buscador-container">
+									<input class="input inp0" name="buscador" placeholder="Que articulo buscas?">
+									<button id="inp0" onClick="envioCampos('paginas','categorias',this);" class="btn-buscar">Buscar</button>
+								</div>
 							</div>
 						</div>
+		
 						<div class="col-md-3 clearfix">
 							<div class="header-carrito">
 								<div>
 									<a href="#">
 										<i class="fa fa-shopping-cart"></i>
 										<span>Carrito</span>
-										<!-- <div class="qty">2</div> -->
+										<div class="qty"> 0 </div>
 									</a>
 								</div>
+								<div>
 							</div>
 						</div>
+		
 					</div>
 				</div>
 			</div>
 		</header>
 
-
-
 		<div class="section">
 			<div class="container">
 				<div class="row">
-
+		
 					<div class="col-md-3">
 						<div class="aside">
-							<h3 class="aside-title">Categories</h3>
+							<h3 class="aside-title">Categorias</h3>
 							<div class="checkbox-filter">
-
 								<div class="input-checkbox">
-									<input type="checkbox" class="check" id="category-1">
-									<label for="category-1">
+									<input type="checkbox" class="check" stage="cat">
+									<label for="cat-1">
 										<span></span>
-										Laptops
-										<small>(120)</small>
+										Camisas
+										<small>2</small>
 									</label>
 								</div>
-
 								<div class="input-checkbox">
-									<input type="checkbox" class="check" id="category-2">
-									<label for="category-2">
+									<input type="checkbox" class="check" stage="cat">
+									<label for="cat-2">
 										<span></span>
-										Smartphones
-										<small>(740)</small>
+										Pantalones
+										<small>2</small>
 									</label>
 								</div>
-
 								<div class="input-checkbox">
-									<input type="checkbox" class="check" id="category-3">
-									<label for="category-3">
+									<input type="checkbox" class="check" stage="cat">
+									<label for="cat-3">
 										<span></span>
-										Cameras
-										<small>(1450)</small>
+										Vestidos
+										<small>2</small>
 									</label>
-								</div>
-
-							</div>
-						</div>
-						
-						<div class="aside">
-							<h3 class="aside-title">Price</h3>
-							<div class="price-filter">
-								<div class="input-number price-min">
-									<input class="price" type="number">
-									<span class="qty-up">+</span>
-									<span class="qty-down">-</span>
-								</div>
-								<span>-</span>
-								<div class="input-number price-max">
-									<input class="price" type="number">
-									<span class="qty-up">+</span>
-									<span class="qty-down">-</span>
 								</div>
 							</div>
 						</div>
 						
 						<div class="aside">
-							<h3 class="aside-title">Brand</h3>
+							<h3 class="aside-title">Marcas</h3>
 							<div class="checkbox-filter">
-
 								<div class="input-checkbox">
-									<input type="checkbox" class="check" id="brand-1">
-									<label for="brand-1">
+									<input type="checkbox" class="check" stage="mar">
+									<label for= "mar-1">
 										<span></span>
-										SAMSUNG
-										<small>(578)</small>
+										LACOSTE
+										<small>1</small>
 									</label>
 								</div>
 								<div class="input-checkbox">
-									<input type="checkbox" class="check" id="brand-2">
-									<label for="brand-2">
+									<input type="checkbox" class="check" stage="mar">
+									<label for= "mar-2">
 										<span></span>
-										LG
-										<small>(125)</small>
+										LEVI'S
+										<small>2</small>
 									</label>
 								</div>
 								<div class="input-checkbox">
-									<input type="checkbox" class="check" id="brand-3">
-									<label for="brand-3">
+									<input type="checkbox" class="check" stage="mar">
+									<label for= "mar-3">
 										<span></span>
-										SONY
-										<small>(755)</small>
+										Calvin Klein
+										<small>1</small>
 									</label>
 								</div>
-
+								<div class="input-checkbox">
+									<input type="checkbox" class="check" stage="mar">
+									<label for= "mar-4">
+										<span></span>
+										Pull and Bear
+										<small>2</small>
+									</label>
+								</div>
 							</div>
 						</div>
 					</div>
 					
-					<div id="store" class="col-md-9">
-						<div class="store-filter clearfix">
-							<div class="store-sort">
-								<label>
-									Sort By:
-									<select class="input-select">
-										<option value="0">Popular</option>
-										<option value="1">Position</option>
-									</select>
-								</label>
-							</div>
-						</div>
-						
+					<div class="col-md-9">
 						<div class="row">
-							<div class="col-md-4 col-xs-6">
-								<div class="producto">
-									<div class="producto-img">
-										<img src="../img/product02.png" alt="">
-										<div class="producto-label">
-											<span class="sale">-30%</span>
+		
+								<div class="col-md-4 col-xs-6 product">
+									<div class="producto">
+										<div class="producto-img">
+											<img src= "../img/vestido_1_2.png">
 										</div>
-									</div>
-									<div class="producto-body">
-										<p class="producto-categoria">Category</p>
-										<h3 class="producto-nombre"><a href="#">product name goes here</a></h3>
-										<h4 class="producto-precio">$980.00 <del class="product-old-precio">$990.00</del></h4>
-										<div class="producto-line"></div>
-										<div class="producto-btn">
-											<div class="add-carrito">
-												<button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-											</div>									
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 col-xs-6">
-								<div class="producto">
-									<div class="producto-img">
-										<img src="../img/product02.png" alt="">
-										<div class="producto-label">
-											<span class="sale">-30%</span>
-										</div>
-									</div>
-									<div class="producto-body">
-										<p class="producto-categoria">Category</p>
-										<h3 class="producto-nombre"><a href="#">product name goes here</a></h3>
-										<h4 class="producto-precio">$980.00 <del class="product-old-precio">$990.00</del></h4>
-										<div class="producto-line"></div>
-										<div class="producto-btn">
-											<div class="add-carrito">
-												<button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-											</div>									
+										<div class="producto-body">
+											<p class="producto-categoria"> VESTIDOS / PULL AND BEAR </p>
+											<h3 class="producto-nombre"><b> Vestido Corto </b></h3>
+											<h4 class="precioActual">$15.85 </h4>
+											<div class="producto-line"></div>
+											<div class="producto-btn">
+												<div class="add-carrito">
+													<button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Ver producto </button>
+												</div>									
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-md-4 col-xs-6">
-								<div class="producto">
-									<div class="producto-img">
-										<img src="../img/product02.png" alt="">
-										<div class="producto-label">
-											<span class="sale">-30%</span>
+
+								<div class="col-md-4 col-xs-6 product">
+									<div class="producto">
+										<div class="producto-img">
+											<img src= "../img/vestido_azul.jpg">
+											<div class="producto-label">
+												<span class="sale">18%</span>
+											</div>
 										</div>
-									</div>
-									<div class="producto-body">
-										<p class="producto-categoria">Category</p>
-										<h3 class="producto-nombre"><a href="#">product name goes here</a></h3>
-										<h4 class="producto-precio">$980.00 <del class="product-old-precio">$990.00</del></h4>
-										<div class="producto-line"></div>
-										<div class="producto-btn">
-											<div class="add-carrito">
-												<button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-											</div>									
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 col-xs-6">
-								<div class="producto">
-									<div class="producto-img">
-										<img src="../img/product02.png" alt="">
-										<div class="producto-label">
-											<span class="sale">-30%</span>
-										</div>
-									</div>
-									<div class="producto-body">
-										<p class="producto-categoria">Category</p>
-										<h3 class="producto-nombre"><a href="#">product name goes here</a></h3>
-										<h4 class="producto-precio">$980.00 <del class="product-old-precio">$990.00</del></h4>
-										<div class="producto-line"></div>
-										<div class="producto-btn">
-											<div class="add-carrito">
-												<button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-											</div>									
+										<div class="producto-body">
+											<p class="producto-categoria"> VESTIDOS / PULL AND BEAR </p>
+											<h3 class="producto-nombre"><b> Vestido Corto Azul </b></h3>
+											<h4 class="precioActual">$9.19 <del class="precioAnterior">$16.60</del></h4>
+											<div class="producto-line"></div>
+											<div class="producto-btn">
+												<div class="add-carrito">
+													<button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Ver producto </button>
+												</div>									
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+
+								<div class="col-md-4 col-xs-6 product">
+									<div class="producto">
+										<div class="producto-img">
+											<img src= "../img/pantalon_1_1.png">
+											<div class="producto-label">
+												<span class="sale">38%</span>
+											</div>
+										</div>
+										<div class="producto-body">
+											<p class="producto-categoria"> PANTALONES / CALVIN KLEIN </p>
+											<h3 class="producto-nombre"><b> Blue Jeans </b></h3>
+											<h4 class="precioActual">$7.19 <del class="precioAnterior">$11.60</del></h4>
+											<div class="producto-line"></div>
+											<div class="producto-btn">
+												<div class="add-carrito">
+													<button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Ver producto </button>
+												</div>									
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-4 col-xs-6 product">
+									<div class="producto">
+										<div class="producto-img">
+											<img src= "../img/pantalon_2_1.png">
+											<div class="producto-label">
+												<span class="sale">-40%</span>
+											</div>
+										</div>
+										<div class="producto-body">
+											<p class="producto-categoria"> PANTALONES / LEVI'S </p>
+											<h3 class="producto-nombre"><b> Black Jeans </b></h3>
+											<h4 class="precioActual">$6.95 <del class="precioAnterior">$11.59</del></h4>
+											<div class="producto-line"></div>
+											<div class="producto-btn">
+												<div class="add-carrito">
+													<button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Ver producto </button>
+												</div>									
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-4 col-xs-6 product">
+									<div class="producto">
+										<div class="producto-img">
+											<img src= "../img/camisa_verde_2.png">
+											<div class="producto-label">
+												<span class="sale">-10%</span>
+											</div>
+										</div>
+										<div class="producto-body">
+											<p class="producto-categoria"> CAMISA / LACOSTE </p>
+											<h3 class="producto-nombre"><b> Camisa Vede </b></h3>
+											<h4 class="precioActual">$8.78 <del class="precioAnterior">$9.75</del></h4>
+											<div class="producto-line"></div>
+											<div class="producto-btn">
+												<div class="add-carrito">
+													<button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Ver producto </button>
+												</div>									
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-4 col-xs-6 product">
+									<div class="producto">
+										<div class="producto-img">
+											<img src= "../img/camisa_roja_3.png">
+											<div class="producto-label">
+												<span class="sale">-5%</span>
+											</div>
+										</div>
+										<div class="producto-body">
+											<p class="producto-categoria"> CAMISA / LEVI'S </p>
+											<h3 class="producto-nombre"><b> Camisa roja </b></h3>
+											<h4 class="precioActual">$9.03 <del class="precioAnterior">$9.50</del></h4>
+											<div class="producto-line"></div>
+											<div class="producto-btn">
+												<div class="add-carrito">
+													<button class="add-carrito-btn"><i class="fa fa-shopping-cart"></i> Ver producto </button>
+												</div>									
+											</div>
+										</div>
+									</div>
+								</div>
+
 						</div>
-					
 					</div>
 				</div>
 			</div>
 		</div>
-
 
 		<footer class="footer-container">
 			<div class="section">
@@ -270,44 +292,40 @@
 					<div class="row">
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">Acerca de</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+								<h3 class="footer-title">Sobre nosotros</h3>
+								
 								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+									<li><a href="#"><i class="fa fa-map-marker"></i>San Salvador, El Salvador.</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+503 6014-0056</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>Admon@Ulook.com</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">Information</h3>
+								<h3 class="footer-title">Informacion</h3>
 								<ul class="footer-links">
-									<li><a href="#">Contactenos</a></li>
-									<li><a href="#">Politicas de privacidad</a></li>
-									<li><a href="#">Preguntas frecuentes</a></li>
+									<li><a href="#">inicio</a></li>
 									<li><a href="#">Terminos y condiciones</a></li>
+									<li><a href="#">Acerca de</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">Information</h3>
+								<h3 class="footer-title">Mi cuenta</h3>
 								<ul class="footer-links">
-									<li><a href="#">Contactenos</a></li>
-									<li><a href="#">Politicas de privacidad</a></li>
-									<li><a href="#">Preguntas frecuentes</a></li>
-									<li><a href="#">Terminos y condiciones</a></li>
+									<li><a href="#">Producto</a></li>
+									<li><a href="#">Detalle de venta</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">Service</h3>
+								<h3 class="footer-title">Servicios</h3>
 								<ul class="footer-links">
-									<li><a href="#">Mi cuenta</a></li>
-									<li><a href="#">Carrito de compras</a></li>
-									<li><a href="#">Mapa de sitio</a></li>
+									<li><a href="#">Carrito de compra</a></li>
+									<li><a href="#">Contactanos</a></li>
 								</ul>
 							</div>
 						</div>
